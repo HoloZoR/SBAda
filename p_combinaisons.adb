@@ -228,10 +228,10 @@ begin
   ---------fin--------------
 end Combi;
 ------------------------------nbCombi-------------------------------------------
--- function est_contigue(sol : in string) return boolean is
---   --{sol repr�sente une solution} => {r�sultat = vrai si sol est une solution contig�e}
--- begin
---
--- end est_contigue;
+function est_contigue(sol : in string) return boolean is
+  --{sol repr�sente une solution} => {r�sultat = vrai si sol est une solution contig�e}
+begin
+  
+end est_contigue;
 ----------------------------fin-------------------------------------------------
 end p_combinaisons;
