@@ -1,3 +1,5 @@
+with p_esiut; use p_esiut;
+
 package body p_combinaisons is
 ---------------------------procedure--------------------------------------------
 ---------------------------CreeVectGaudi----------------------------------------
@@ -182,23 +184,22 @@ end CreeFicsol;
 ---------------------------nbCombi----------------------------------------------
 function nbCombi(fsol : in text_io.file_type; nbcases : in T_nbcases) return natural is
 -- {fsol ouvert, f- = <>} => {r�sultat = nombre de combinaisons en nbcases dans fsol}
-  nbcombi : string(1..3);
-  nb : natural;
+  n : integer;
+  esp : character := ' ';
 begin
-  nbCombi := "0 0";
-  nb := 3;
+  n := 0;
   --------------------------
-  if nbcases = 3 then
-    get_line(fsol, nbcombi,nb);
-  else -- nbcases /= 3
+  if nbcases /= 3 then
     for i in 3..nbcases loop
       skip_page(fsol); -- saute les pages jusqu'à la page voulu
     end loop;
   end if;
   --------------------------
-  get_line(fsol, nbcombi,nb);
+  get(fsol, n);
+  get(fsol, esp);
+  get(fsol, n);
   --------------------------
-  return integer'value(nbCombi(3..nb));
+  return n;
   --------------------------
 end nbCombi;
 ------------------------------Combi---------------------------------------------

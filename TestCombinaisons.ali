@@ -1,0 +1,86 @@
+V "GNAT Lib v6"
+M P W=b
+A -gnatv
+A -gnato
+P ZX
+
+RN
+RV NO_IO
+RV NO_DEFAULT_INITIALIZATION
+RV SPARK_05
+
+U testcombinaisons%b	TestCombinaisons.adb	9aafe250 NE OO SU
+W p_combinaisons%s	p_combinaisons.adb	p_combinaisons.ali
+W p_esiut%s		p_esiut.adb		p_esiut.ali
+W sequential_io%s
+W text_io%s		text_io.ads		text_io.ali
+
+D ada.ads		20070406091342 3ffc8e18 ada%s
+D a-except.ads		20151016123252 291912d5 ada.exceptions%s
+D a-ioexce.ads		20140225151544 e4a01f64 ada.io_exceptions%s
+D a-sequio.ads		20090409150019 7b5d9d38 ada.sequential_io%s
+D a-stream.ads		20141120112812 119b8fb3 ada.streams%s
+D a-tags.ads		20151016130316 01f5e3ef ada.tags%s
+D a-textio.ads		20140717063745 386df5d4 ada.text_io%s
+D a-tiinio.ads		20140717063513 aa04e5d6 ada.text_io.integer_io%s
+D a-unccon.ads		20070406091342 f9eb8f06 ada.unchecked_conversion%s
+D interfac.ads		20151118101227 4be8ce1b interfaces%s
+D i-cstrea.ads		20140801100435 e53d8b8e interfaces.c_streams%s
+D p_combinaisons.ads	20190121135335 34fe11e3 p_combinaisons%s
+D p_esiut.ads		20171021085208 79b955f7 p_esiut%s
+D sequenio.ads		20080801103345 98e3343c sequential_io%s
+D system.ads		20151123113124 6326c08a system%s
+D s-crtl.ads		20141120112812 0ebbdb71 system.crtl%s
+D s-exctab.ads		20140225151139 54135002 system.exception_table%s
+D s-ficobl.ads		20140718105747 078245e4 system.file_control_block%s
+D s-parame.ads		20140801093848 7e2a0d7f system.parameters%s
+D s-sequio.ads		20090409150019 fc7560a7 system.sequential_io%s
+D s-soflin.ads		20151020124036 14e1eb6c system.soft_links%s
+D s-stache.ads		20140225151139 a37c21ec system.stack_checking%s
+D s-stalib.ads		20151112104907 09bd3940 system.standard_library%s
+D s-stoele.ads		20140225151139 2dc34a04 system.storage_elements%s
+D s-traent.ads		20140730135025 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20140731130224 9d58a4c0 system.unsigned_types%s
+D s-wchcon.ads		20140718092328 1b7d22d2 system.wch_con%s
+D TestCombinaisons.adb	20190121155240 0addb4b1 testcombinaisons%b
+D text_io.ads		20070406091342 45d626c9 text_io%s
+X 4 a-sequio.ads
+53P9*File_Type<20|63P9> 28|8r18[12|18]
+55E9*File_Mode
+55n23*In_File{55E9[12|18]} 28|12r11[12|18]
+76U14*Open 28|12s3[12|18]
+82U14*Close 28|14s3[12|18]
+X 7 a-textio.ads
+52P9*File_Type 28|10r18
+53n23*In_File{53E9} 28|23r14
+92U14*Open 28|23s3
+98U14*Close 28|27s3
+X 12 p_combinaisons.ads
+5K9*p_combinaisons 51e19 28|1w6 1r26 4r5 5r5
+12a17*nom{string} 28|19r23
+13i17*valeur{positive} 28|20r23
+18K17*p_cases_io[4|43] 28|4r20 8r7
+21K17*p_int_io[8|46] 28|5r20
+24A14*TV_Gaudi(11R14)<integer> 28|9r7
+28U19*CreeVectGaudi 28|13s3
+31U19*TriVectGaudi 28|17s3
+34U19*CreeFicsol 28|24s3
+38V18*nbCombi{natural} 28|25s10
+X 13 p_esiut.ads
+15K11*p_esiut 176e14 28|2w15 2r37
+21U16*ECRIRE 28|25s3
+24U16*ECRIRE_LIGNE 28|20s5
+87U16*ECRIRE_LIGNE=88:42 28|19s5
+X 14 sequenio.ads
+24k17*Sequential_IO 28|3w6
+X 20 s-sequio.ads
+63P9*File_Type(43R9)
+X 28 TestCombinaisons.adb
+7U11*TestCombinaisons 7b11 30l5 30t21
+8p3 f{4|53P9[12|18]} 12m8 12r8 13m17 13r17 14m9 14r9
+9a3 V{12|24A14} 13m20 17m16 17r16 18r12 19r18 20r18 24r14
+10p3 fsol{7|52P9} 23m8 23r8 24m17 24r17 25r18 27m9 27r9
+18i7 i{integer} 19r20 20r20
+X 29 text_io.ads
+24K9*Text_IO=24:29 28|2w6 2r28 10r10
+
