@@ -48,7 +48,7 @@ procedure CreeFicsol(V : in TV_Gaudi; fsol : in out text_io.file_type) is
   fsol3, fsol4, fsol5, fsol6, fsol7 : text_io.file_type;
   nb_combi3,nb_combi4,nb_combi5,nb_combi6,nb_combi7 : integer := 0;
   somme : integer;
-  val : string(1..14);
+  val : string(1..15);
   lg : integer;
 begin
   reset(fsol, out_file);
@@ -63,9 +63,10 @@ begin
       for i3 in i2+1..V'Last loop
         somme := V(i1).valeur+V(i2).valeur+V(i3).valeur;
         if somme = 33 then
-          put(fsol3,i1);
-          put(fsol3,i2);
-          put(fsol3,i3);
+          put(fsol3,V(i1).nom);
+          put(fsol3,V(i2).nom);
+          put(fsol3,V(i3).nom);
+          new_line(fsol3);
           nb_combi3 := nb_combi3 +1;
         elsif somme < 33 then
 -- 4 cases
@@ -76,6 +77,7 @@ begin
               put(fsol4,V(i2).nom);
               put(fsol4,V(i3).nom);
               put(fsol4,V(i4).nom);
+              new_line(fsol4);
               nb_combi4 := nb_combi4 +1;
             elsif somme < 33 then
 -- 5 cases
@@ -87,6 +89,7 @@ begin
                   put(fsol5,V(i3).nom);
                   put(fsol5,V(i4).nom);
                   put(fsol5,V(i5).nom);
+                  new_line(fsol5);
                   nb_combi5 := nb_combi5 +1;
                 elsif somme < 33 then
 -- 6 cases
@@ -99,6 +102,7 @@ begin
                       put(fsol6,V(i4).nom);
                       put(fsol6,V(i5).nom);
                       put(fsol6,V(i6).nom);
+                      new_line(fsol6);
                       nb_combi6 := nb_combi6 +1;
                     elsif somme < 33 then
 -- 7 cases
@@ -112,7 +116,7 @@ begin
                           put(fsol7,V(i5).nom);
                           put(fsol7,V(i6).nom);
                           put(fsol7,V(i7).nom);
-
+                          new_line(fsol7);
                           nb_combi7 := nb_combi7 +1;
 
                         end if;
@@ -133,7 +137,7 @@ begin
     end loop;
   end loop;
 
-  put(fsol,3); put(fsol,' '); put(fsol,nb_combi3); new_line(fsol);
+  put(fsol,3,1); put(fsol,' '); put(fsol,nb_combi3,1); new_line(fsol);
   reset(fsol3, in_file);
   while not end_of_file(fsol3) loop
     get_line(fsol3,val,lg);
@@ -141,7 +145,7 @@ begin
   end loop;
   new_page(fsol);
 
-  put(fsol,4); put(fsol,' '); put(fsol,nb_combi4); new_line(fsol);
+  put(fsol,4,1); put(fsol,' '); put(fsol,nb_combi4,1); new_line(fsol);
   reset(fsol4, in_file);
   while not end_of_file(fsol4) loop
     get_line(fsol4,val,lg);
@@ -149,7 +153,7 @@ begin
   end loop;
   new_page(fsol);
 
-  put(fsol,5); put(fsol,' '); put(fsol,nb_combi5); new_line(fsol);
+  put(fsol,5,1); put(fsol,' '); put(fsol,nb_combi5,1); new_line(fsol);
   reset(fsol5, in_file);
   while not end_of_file(fsol5) loop
     get_line(fsol5,val,lg);
@@ -157,7 +161,7 @@ begin
   end loop;
   new_page(fsol);
 
-  put(fsol,6); put(fsol,' '); put(fsol,nb_combi6); new_line(fsol);
+  put(fsol,6,1); put(fsol,' '); put(fsol,nb_combi6,1); new_line(fsol);
   reset(fsol6, in_file);
   while not end_of_file(fsol6) loop
     get_line(fsol6,val,lg);
@@ -165,7 +169,7 @@ begin
   end loop;
   new_page(fsol);
 
-  put(fsol,7); put(fsol,' '); put(fsol,nb_combi7); new_line(fsol);
+  put(fsol,7,1); put(fsol,' '); put(fsol,nb_combi7,1); new_line(fsol);
   reset(fsol7, in_file);
   while not end_of_file(fsol7) loop
     get_line(fsol7,val,lg);
@@ -230,9 +234,49 @@ end Combi;
 ------------------------------nbCombi-------------------------------------------
 -- function est_contigue(sol : in string) return boolean is
 --   --{sol repr�sente une solution} => {r�sultat = vrai si sol est une solution contig�e}
---   contig : boolean;
+--   ---- record de Case ----
+--   type TR_case is record
+--     cases : string(1..2);
+--     contig : boolean;
+--   end record;
+--   ----- vecteur de Case -----
+--   type TV_Case is array (positive range <>) of TR_Case;
+--   ----- declatation de mes variables
+--   V : TV_Case(1..(sol'length/2)); -- vecteur de la taille de sol/2
+--   i,j : positive := V'first;
+--   indVal : positive := V'first;
+--   contigue : boolean := false;
 -- begin
---
+--   -- Initialisation de V --
+--   while i < V'last + 1 loop
+--     V(i) := (sol(j)&sol(j+1), true);
+--     i := i + 1;
+--     j := j + 2;
+--   end loop; -- Vecteur initiliser par les cases de sol et contigue = true
+--     ------------------------------------------------------------------------
+--     -- initialiser les valeurs contigue --
+--     while not contigue loop
+--       i := V'first + 1;
+--       contigue := true;
+--       while i < V'last + 1 loop
+--         if not contigue2cases(V(indVal).cases,V(i).cases) then
+--           contigue := false;
+--           v(i).contig := false; -- mets les valeurs contigue avec V'first à false
+--         end if;
+--         i := i + 1;
+--       end loop;
+--     if not contigue then
+--       -------------------------------------------------------------------------
+--       -- indice de la première valeurs contigue --
+--       i := V'first + 1;
+--       while i < V'last + 1 and then v(i).contig = false loop
+--         i := i + 1;
+--       end loop;
+--       indVal := i;
+--       -------------------------------------------------------------------------
+--     end if;
+--     end loop;
+--     return contigue;
 -- end est_contigue;
 ----------------------------fin-------------------------------------------------
 end p_combinaisons;
