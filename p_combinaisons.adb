@@ -238,7 +238,7 @@ end Combi;
 ------------------------------Affichage---------------------------------------------
 procedure Affichage(fsol : in text_io.file_type; nbcases : in T_nbcases) is
   -- {fsol ouvert, f- = <>} => {Affiche toutes les combinaisons pour un nombre de case donnés}
-  nbCb : integer;
+  nbCb : natural;
   cb : string(1..nbcases*2);
 begin
   nbCb := nbCombi(fsol,nbcases);
@@ -278,19 +278,65 @@ end Affichage;
         or ((lig1 = lig2 +1 or lig1 = lig2 -1) and (col1 = T_Col'succ(col2) or col1 = T_Col'pred(col2))));
 
   end contigue2cases;
+-- function est_contigue(sol : in string) return boolean is
+--   --{sol repr�sente une solution} => {r�sultat = vrai si sol est une solution contig�e}
+--   ---- record de Case ----
+--   type TR_case is record
+--     cases : string(1..2);
+--     contig : boolean;
+--   end record;
+--   ----- vecteur de Case -----
+--   type TV_Case is array (positive range <>) of TR_Case;
+--   ----- declatation de mes variables
+--   V : TV_Case(1..(sol'length/2)); -- vecteur de la taille de sol/2
+--   i,j : positive := V'first;
+--   indVal : positive := V'first;
+--   contigue : boolean := false;
+-- begin
+--   -- Initialisation de V --
+--   while i < V'last + 1 loop
+--     V(i) := (sol(j)&sol(j+1), true);
+--     i := i + 1;
+--     j := j + 2;
+--   end loop; -- Vecteur initiliser par les cases de sol et contigue = true
+--     ------------------------------------------------------------------------
+--     -- initialiser les valeurs contigue --
+--     while not contigue loop
+--       i := V'first + 1;
+--       contigue := true;
+--       while i < V'last + 1 loop
+--         if not contigue2cases(V(indVal).cases,V(i).cases) then
+--           contigue := false;
+--           v(i).contig := false; -- mets les valeurs contigue avec V'first à false
+--         end if;
+--         i := i + 1;
+--       end loop;
+--     if not contigue then
+--       -------------------------------------------------------------------------
+--       -- indice de la première valeurs contigue --
+--       i := V'first + 1;
+--       while i < V'last + 1 and then v(i).contig = false loop
+--         i := i + 1;
+--       end loop;
+--       indVal := i;
+--       -------------------------------------------------------------------------
+--     end if;
+--     end loop;
+--     return contigue;
+-- end est_contigue;
 
-	-- procedure CreeFicsolcont(fsol, fcont : in out text_io.file_type)  is
-	-- -- {fsol ouvert} => {fcont contient les combinaisons contig�es de fsol et est structur� de la m�me fa�on}
-  --   val : string(1..15);
-  --   lg : integer;
-  -- begin
-  --   reset(fsol, in_file);
-  --   reset(fcont, out_file);
-  --   while not end_of_file(fsol) loop
-  --     skip_line()
-  --     get_line(fsol,val,lg)
-  --   end loop;
-  -- end CreeFicsolcont;
+-- procedure CreeFicsolcont(fsol, fcont : in out text_io.file_type)  is
+-- -- {fsol ouvert} => {fcont contient les combinaisons contig�es de fsol et est structur� de la m�me fa�on}
+--   val : string(1..15);
+--   lg : integer;
+-- begin
+--   reset(fsol, in_file);
+--   reset(fcont, out_file);
+--   while not end_of_file(fsol) loop
+--     skip_line()
+--     get_line(fsol,val,lg)
+--   end loop;
+-- end CreeFicsolcont;
 
 ----------------------------fin-------------------------------------------------
 end p_combinaisons;
