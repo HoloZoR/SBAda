@@ -22,9 +22,14 @@ begin -- TestCombinaisons
   -------------------------------
   open(fsol, in_file, "fsol.txt");
   CreeFicsol(V, fsol);
+  reset(fsol, in_file);
   ecrire(nbCombi(fsol, 3));
 
   close(fsol);
   -------------------------------
+  ecrire("A2,A4 :  "); ecrire_ligne(contigue2cases("A2","A4"));
+  ecrire("A2,B4 :  "); ecrire_ligne(contigue2cases("A2","B4"));
+  ecrire("A2,B3 :  "); ecrire_ligne(contigue2cases("A2","B3"));
+  ecrire("A2,D1 :  "); ecrire_ligne(contigue2cases("A2","D1"));
 
 end TestCombinaisons;
