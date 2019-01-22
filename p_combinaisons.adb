@@ -184,6 +184,7 @@ begin
 
 end CreeFicsol;
 
+
 ---------------------------function---------------------------------------------
 ---------------------------nbCombi----------------------------------------------
 function nbCombi(fsol : in text_io.file_type; nbcases : in T_nbcases) return natural is
@@ -206,6 +207,8 @@ begin
   return n;
   --------------------------
 end nbCombi;
+
+
 ------------------------------Combi---------------------------------------------
 function Combi(fsol : in text_io.file_type; nbcases : in T_nbcases; numsol : in positive) return string is
 -- {fsol ouvert, f- = <>}
@@ -231,7 +234,35 @@ begin
   return nbCombi(nbCombi'First..nb);
   ---------fin--------------
 end Combi;
-------------------------------nbCombi-------------------------------------------
+
+------------------------------Affichage---------------------------------------------
+procedure Affichage(fsol : in text_io.file_type; nbcases : in T_nbcases) is
+  -- {fsol ouvert, f- = <>} => {Affiche toutes les combinaisons pour un nombre de case donnés}
+  nbCb : integer;
+  cb : string(1..nbcases*2);
+begin
+  nbCb := nbCombi(fsol,nbcases);
+
+  Ecrire("* "); Ecrire(nbCb);
+  Ecrire(" solutions en "); Ecrire(nbcases); Ecrire_Ligne(" cases");
+  Ecrire_Ligne("-------------------------");
+
+  for i in 1..nbcb loop
+    cb := Combi(fsol,nbcases,i);
+    Ecrire("solution "); Ecrire(i); Ecrire('/'); Ecrire(nbcb); Ecrire(": ");
+    for j in 1..nbcases-1 loop
+      Ecrire(cb(j..j+1));
+      if j < nbcases-1 then
+        Ecrire(',');
+      else
+        A_la_ligne;
+      end if;
+    end loop;
+  end loop;
+
+
+end Affichage;
+
 
 	function contigue2cases(C1, C2 : in string) return boolean is
 	--{sol repr�sente une solution} => {r�sultat = vrai si 2 cases sont contigues}
@@ -248,10 +279,18 @@ end Combi;
 
   end contigue2cases;
 
--- function est_contigue(sol : in string) return boolean is
---   --{sol repr�sente une solution} => {r�sultat = vrai si sol est une solution contig�e}
--- begin
---
--- end est_contigue;
+	-- procedure CreeFicsolcont(fsol, fcont : in out text_io.file_type)  is
+	-- -- {fsol ouvert} => {fcont contient les combinaisons contig�es de fsol et est structur� de la m�me fa�on}
+  --   val : string(1..15);
+  --   lg : integer;
+  -- begin
+  --   reset(fsol, in_file);
+  --   reset(fcont, out_file);
+  --   while not end_of_file(fsol) loop
+  --     skip_line()
+  --     get_line(fsol,val,lg)
+  --   end loop;
+  -- end CreeFicsolcont;
+
 ----------------------------fin-------------------------------------------------
 end p_combinaisons;

@@ -25,11 +25,15 @@ begin -- TestCombinaisons
   reset(fsol, in_file);
   ecrire(nbCombi(fsol, 3));
 
+  Affichage(fsol,3);
+  Affichage(fsol,4);
+  Affichage(fsol,5);
+  Affichage(fsol,6);
+  Affichage(fsol,7);
+
+
   close(fsol);
   -------------------------------
-  ecrire("A2,A4 :  "); ecrire_ligne(contigue2cases("A2","A4"));
-  ecrire("A2,B4 :  "); ecrire_ligne(contigue2cases("A2","B4"));
-  ecrire("A2,B3 :  "); ecrire_ligne(contigue2cases("A2","B3"));
-  ecrire("A2,D1 :  "); ecrire_ligne(contigue2cases("A2","D1"));
+
 
 end TestCombinaisons;
