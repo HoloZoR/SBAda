@@ -8,6 +8,7 @@ procedure TestCombinaisons is
   f : p_cases_IO.file_type;
   V : TV_Gaudi(1..16);
   fsol : text_io.file_type;
+
 begin -- TestCombinaisons
   -------CreeVectGaudi------------
   open(f, in_file, "CarreGaudi");
@@ -37,6 +38,5 @@ begin -- TestCombinaisons
   Affichage(fsol,6);
   Affichage(fsol,7);
 
-  close(fsol);
 
 end TestCombinaisons;

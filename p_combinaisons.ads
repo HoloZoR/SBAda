@@ -20,6 +20,7 @@ package p_combinaisons is
 	---- Instanciations de integer_io pour manipuler des entiers dans des fichiers texte ----------------------------
 	package p_int_io is new integer_io(integer); use p_int_io;
 
+
 	---- Type pour le vecteur de "travail" --------------------------------------------------------------------------
 	type TV_Gaudi is array (positive range <>) of TR_Case;
 
@@ -42,8 +43,8 @@ package p_combinaisons is
 	-- {fsol ouvert, f- = <>}
 	-- => {r�sultat = cha�ne repr�sentant la solution numsol lue dans fsol pour une combinaison de nbcases}
 
-	procedure Affichage(fsol : in text_io.file_type; nbcases : in T_nbcases);
-	-- {fsol ouvert, f- = <>} => {Affiche toutes les combinaisons pour un nombre de case donnés}
+	procedure Affichage(fsol : in out text_io.file_type; nbcases : in T_nbcases);
+	-- {fsol ouvert} => {Affiche toutes les combinaisons pour un nombre de case donnés}
 
 	function contigue2cases(C1, C2 : in string) return boolean;
 	--{sol repr�sente une solution} => {r�sultat = vrai si 2 cases sont contigues}

@@ -2,20 +2,18 @@ V "GNAT Lib v6"
 M P W=b
 A -gnatv
 A -gnato
-P SS ZX
+P ZX
 
 RN
 RV NO_IO
-RV NO_SECONDARY_STACK
 RV NO_DEFAULT_INITIALIZATION
 RV SPARK_05
 
-U testcombinaisons%b	TestCombinaisons.adb	0481729e NE OO SU
+U gauditext%b		gauditext.adb		85783cf2 NE OO SU IL
 W p_combinaisons%s	p_combinaisons.adb	p_combinaisons.ali
 W p_esiut%s		p_esiut.adb		p_esiut.ali
 W p_vue_text%s		p_vue_text.adb		p_vue_text.ali
 W sequential_io%s
-W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
 W text_io%s		text_io.ads		text_io.ali
 
 D ada.ads		20070406091342 3ffc8e18 ada%s
@@ -27,18 +25,18 @@ D a-tags.ads		20151016130316 01f5e3ef ada.tags%s
 D a-textio.ads		20140717063745 386df5d4 ada.text_io%s
 D a-tiinio.ads		20140717063513 aa04e5d6 ada.text_io.integer_io%s
 D a-unccon.ads		20070406091342 f9eb8f06 ada.unchecked_conversion%s
+D gauditext.adb		20190122153133 6f3b2003 gauditext%b
 D interfac.ads		20151118101227 4be8ce1b interfaces%s
 D i-cstrea.ads		20140801100435 e53d8b8e interfaces.c_streams%s
 D p_combinaisons.ads	20190122130957 f54754e4 p_combinaisons%s
 D p_esiut.ads		20171021085208 79b955f7 p_esiut%s
-D p_vue_text.ads	20190122144552 815ff632 p_vue_text%s
+D p_vue_text.ads	20190122151535 bb880f17 p_vue_text%s
 D sequenio.ads		20080801103345 98e3343c sequential_io%s
 D system.ads		20151123113124 6326c08a system%s
 D s-crtl.ads		20141120112812 0ebbdb71 system.crtl%s
 D s-exctab.ads		20140225151139 54135002 system.exception_table%s
 D s-ficobl.ads		20140718105747 078245e4 system.file_control_block%s
 D s-parame.ads		20140801093848 7e2a0d7f system.parameters%s
-D s-secsta.ads		20140225151139 86a2856d system.secondary_stack%s
 D s-sequio.ads		20090409150019 fc7560a7 system.sequential_io%s
 D s-soflin.ads		20151020124036 14e1eb6c system.soft_links%s
 D s-stache.ads		20140225151139 a37c21ec system.stack_checking%s
@@ -47,57 +45,46 @@ D s-stoele.ads		20140225151139 2dc34a04 system.storage_elements%s
 D s-traent.ads		20140730135025 005bf670 system.traceback_entries%s
 D s-unstyp.ads		20140731130224 9d58a4c0 system.unsigned_types%s
 D s-wchcon.ads		20140718092328 1b7d22d2 system.wch_con%s
-D TestCombinaisons.adb	20190122145632 d415974a testcombinaisons%b
 D text_io.ads		20070406091342 45d626c9 text_io%s
 X 4 a-sequio.ads
-53P9*File_Type<22|63P9> 30|9r18[12|18]
+53P9*File_Type<22|63P9> 10|10r18[13|18]
 55E9*File_Mode
-55n23*In_File{55E9[12|18]} 30|16r11[12|18]
-76U14*Open 30|16s3[12|18]
-82U14*Close 30|18s3[12|18]
+55n23*In_File{55E9[13|18]} 10|15r11[13|18]
+76U14*Open 10|15s3[13|18]
+82U14*Close 10|17s3[13|18]
 X 7 a-textio.ads
-52P9*File_Type 30|11r18
-53n23*In_File{53E9} 30|27r14 30r15 33r15
-92U14*Open 30|27s3
-98U14*Close 30|43s3
-100U14*Reset 30|30s3 33s3
-242U14*Put 30|45s5
+52P9*File_Type 10|12r18
+53n23*In_File{53E9} 10|22r14
+92U14*Open 10|22s3
+169U14*Skip_Line 10|30s5
+242U14*Put 10|27s5
 X 8 a-tiinio.ads
-56U14*Get 30|45s46[12|21]
-X 12 p_combinaisons.ads
-5K9*p_combinaisons 59e19 30|1w6 1r26 4r5 5r5
-10I17*T_nbcases{positive} 30|12r13
-12a17*nom{string} 30|23r23
-13i17*valeur{positive} 30|24r23
-18K17*p_cases_io[4|43] 30|4r20 9r7
-21K17*p_int_io[8|46] 30|5r20
-25A14*TV_Gaudi(11R14)<integer> 30|10r7
-29U19*CreeVectGaudi 30|17s3
-32U19*TriVectGaudi 30|21s3
-35U19*CreeFicsol 30|28s3
-39V18*nbCombi{natural} 30|31s16
-42V18*Combi{string} 30|34s10
-46U19*Affichage 30|37s3 38s3 39s3 40s3 41s3
-X 13 p_esiut.ads
-15K11*p_esiut 176e14 30|2w15 2r37
-24U16*ECRIRE_LIGNE 30|24s5 31s3
-69U16*ECRIRE=70:42 30|34s3
-87U16*ECRIRE_LIGNE=88:42 30|23s5
-X 14 p_vue_text.ads
-5K9*p_vue_text 27e15 30|6w6 6r22
-14U13*afficheGrille 30|46s5
-X 15 sequenio.ads
-24k17*Sequential_IO 30|3w6
+56U14*Get 10|27s46[13|21]
+X 10 gauditext.adb
+8U11*gauditext 8b11 33l5 33t14
+9i3 nbcases{13|10I17} 27m50 29r20
+10p3 f{4|53P9[13|18]} 15m8 15r8 16m17 16r17 17m9 17r9
+11a3 V{13|25A14} 16m20 20m16 20r16 23r14 28r19
+12p3 fsol{7|52P9} 22m8 22r8 23m17 23r17 29m15 29r15
+X 13 p_combinaisons.ads
+5K9*p_combinaisons 10|3w6 3r26 5r5 6r5 13|59e19
+10I17*T_nbcases{positive} 10|9r13
+18K17*p_cases_io[4|43] 10|5r20 10r7
+21K17*p_int_io[8|46] 10|6r20
+25A14*TV_Gaudi(11R14)<integer> 10|11r7
+29U19*CreeVectGaudi 10|16s3
+32U19*TriVectGaudi 10|20s3
+35U19*CreeFicsol 10|23s3
+46U19*Affichage 10|29s5
+X 14 p_esiut.ads
+15K11*p_esiut 10|2w6 2r19 14|176e14
+X 15 p_vue_text.ads
+6K9*p_vue_text 10|1w15 1r40 15|28e15
+15U13*afficheGrille 10|28s5
+X 16 sequenio.ads
+24k17*Sequential_IO 10|4w6
 X 22 s-sequio.ads
 63P9*File_Type(43R9)
-X 30 TestCombinaisons.adb
-8U11*TestCombinaisons 8b11 50l5 50t21
-9p3 f{4|53P9[12|18]} 16m8 16r8 17m17 17r17 18m9 18r9
-10a3 V{12|25A14} 17m20 21m16 21r16 22r12 23r18 24r18 28r14 46r19
-11p3 fsol{7|52P9} 27m8 27r8 28m17 28r17 30m9 30r9 31r24 33m9 33r9 34r16 37m13
-. 37r13 38m13 38r13 39m13 39r13 40m13 40r13 41m13 41r13 43m9 43r9
-12i3 nbcases{12|10I17} 45m50
-22i7 i{integer} 23r20 24r20
-X 31 text_io.ads
-24K9*Text_IO=24:29 30|2w6 2r28 11r10
+X 30 text_io.ads
+24K9*Text_IO=24:29 10|1w6 1r31 12r10
 

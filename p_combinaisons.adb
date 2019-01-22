@@ -1,4 +1,4 @@
-with p_esiut; use p_esiut;
+with text_io; use text_io;
 
 package body p_combinaisons is
 ---------------------------procedure--------------------------------------------
@@ -190,18 +190,16 @@ end CreeFicsol;
 function nbCombi(fsol : in text_io.file_type; nbcases : in T_nbcases) return natural is
 -- {fsol ouvert, f- = <>} => {r�sultat = nombre de combinaisons en nbcases dans fsol}
   n : integer;
-  esp : character := ' ';
 begin
   n := 0;
   --------------------------
   if nbcases /= 3 then
-    for i in 3..nbcases loop
+    for i in 4..nbcases loop
       skip_page(fsol); -- saute les pages jusqu'à la page voulu
     end loop;
   end if;
   --------------------------
   get(fsol, n);
-  get(fsol, esp);
   get(fsol, n);
   --------------------------
   return n;
@@ -213,14 +211,13 @@ end nbCombi;
 function Combi(fsol : in text_io.file_type; nbcases : in T_nbcases; numsol : in positive) return string is
 -- {fsol ouvert, f- = <>}
 -- => {r�sultat = cha�ne repr�sentant la solution numsol lue dans fsol pour une combinaison de nbcases}
-  nbcombi : string(1..14);
+  nbcombi : string(1..15);
   nb : natural;
 begin
-  nbCombi := "0 0           ";
-  nb := 3;
+  nbCombi := "0 0            ";
   --------------------------
   if nbcases /= 3 then
-    for i in 3..nbcases loop
+    for i in 4..nbcases loop
       skip_page(fsol); -- saute les pages jusqu'à la page voulu
     end loop;
   end if;
@@ -236,27 +233,31 @@ begin
 end Combi;
 
 ------------------------------Affichage---------------------------------------------
-procedure Affichage(fsol : in text_io.file_type; nbcases : in T_nbcases) is
-  -- {fsol ouvert, f- = <>} => {Affiche toutes les combinaisons pour un nombre de case donnés}
+procedure Affichage(fsol : in out text_io.file_type; nbcases : in T_nbcases) is
+  -- {fsol ouvert} => {Affiche toutes les combinaisons pour un nombre de case donnés}
   nbCb : natural;
   cb : string(1..nbcases*2);
+  j : integer;
 begin
+  reset(fsol, in_file);
   nbCb := nbCombi(fsol,nbcases);
-
-  Ecrire("* "); Ecrire(nbCb);
-  Ecrire(" solutions en "); Ecrire(nbcases); Ecrire_Ligne(" cases");
-  Ecrire_Ligne("-------------------------");
+  put("* "); put(nbCb,1);
+  put(" solutions en "); put(nbcases,1); put_Line(" cases");
+  put_Line("-------------------------");
 
   for i in 1..nbcb loop
+    j:=1;
+    reset(fsol, in_file);
     cb := Combi(fsol,nbcases,i);
-    Ecrire("solution "); Ecrire(i); Ecrire('/'); Ecrire(nbcb); Ecrire(": ");
-    for j in 1..nbcases-1 loop
-      Ecrire(cb(j..j+1));
-      if j < nbcases-1 then
-        Ecrire(',');
+    put("solution "); put(i,1); put('/'); put(nbcb,1); put(": ");
+    while j <= (nbcases*2)-1 loop
+      put(cb(j..j+1));
+      if j < (nbcases*2)-1 then
+        put(',');
       else
-        A_la_ligne;
+        new_line;
       end if;
+      j := j+2;
     end loop;
   end loop;
 
@@ -278,6 +279,7 @@ end Affichage;
         or ((lig1 = lig2 +1 or lig1 = lig2 -1) and (col1 = T_Col'succ(col2) or col1 = T_Col'pred(col2))));
 
   end contigue2cases;
+
 -- function est_contigue(sol : in string) return boolean is
 --   --{sol repr�sente une solution} => {r�sultat = vrai si sol est une solution contig�e}
 --   ---- record de Case ----

@@ -1,0 +1,81 @@
+V "GNAT Lib v6"
+A -gnatv
+A -gnato
+P ZX
+
+RN
+RV NO_IO
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV SPARK_05
+
+U p_vue_text%b		p_vue_text.adb		5db06d1c NE OO PK IL
+W ada.tags%s		a-tags.adb		a-tags.ali
+W system.concat_3%s	s-conca3.adb		s-conca3.ali
+W text_io%s		text_io.ads		text_io.ali
+
+U p_vue_text%s		p_vue_text.ads		93fa4906 EE NE OO PK IL
+W p_combinaisons%s	p_combinaisons.adb	p_combinaisons.ali
+W sequential_io%s
+W text_io%s		text_io.ads		text_io.ali
+
+D ada.ads		20070406091342 3ffc8e18 ada%s
+D a-except.ads		20151016123252 291912d5 ada.exceptions%s
+D a-ioexce.ads		20140225151544 e4a01f64 ada.io_exceptions%s
+D a-sequio.ads		20090409150019 7b5d9d38 ada.sequential_io%s
+D a-stream.ads		20141120112812 119b8fb3 ada.streams%s
+D a-tags.ads		20151016130316 01f5e3ef ada.tags%s
+D a-textio.ads		20140717063745 386df5d4 ada.text_io%s
+D a-tiinio.ads		20140717063513 aa04e5d6 ada.text_io.integer_io%s
+D a-unccon.ads		20070406091342 f9eb8f06 ada.unchecked_conversion%s
+D interfac.ads		20151118101227 4be8ce1b interfaces%s
+D i-cstrea.ads		20140801100435 e53d8b8e interfaces.c_streams%s
+D p_combinaisons.ads	20190122130957 f54754e4 p_combinaisons%s
+D p_vue_text.ads	20190122151535 bb880f17 p_vue_text%s
+D p_vue_text.adb	20190122153353 a3ee44c2 p_vue_text%b
+D sequenio.ads		20080801103345 98e3343c sequential_io%s
+D system.ads		20151123113124 6326c08a system%s
+D s-conca3.ads		20140225151544 0b705ca5 system.concat_3%s
+D s-crtl.ads		20141120112812 0ebbdb71 system.crtl%s
+D s-exctab.ads		20140225151139 54135002 system.exception_table%s
+D s-ficobl.ads		20140718105747 078245e4 system.file_control_block%s
+D s-parame.ads		20140801093848 7e2a0d7f system.parameters%s
+D s-sequio.ads		20090409150019 fc7560a7 system.sequential_io%s
+D s-soflin.ads		20151020124036 14e1eb6c system.soft_links%s
+D s-stache.ads		20140225151139 a37c21ec system.stack_checking%s
+D s-stalib.ads		20151112104907 09bd3940 system.standard_library%s
+D s-stoele.ads		20140225151139 2dc34a04 system.storage_elements%s
+D s-traent.ads		20140730135025 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20140731130224 9d58a4c0 system.unsigned_types%s
+D s-wchcon.ads		20140718092328 1b7d22d2 system.wch_con%s
+D text_io.ads		20070406091342 45d626c9 text_io%s
+X 7 a-textio.ads
+166U14*New_Line 14|11s5 22s5 33s5 51s7
+208U14*Put 14|6s5 10s5 17s5 21s5 29s5 50s7
+242U14*Put 14|8s7 19s7 31s7 40s9 43s11 46s11
+X 8 a-tiinio.ads
+66U14*Put 14|37s7[12|21] 42s11[12|21] 45s11[12|21]
+X 12 p_combinaisons.ads
+5K9*p_combinaisons 59e19 13|3w6 3r26 4r5 5r5
+13i17*valeur{positive} 14|41r17 42r20 45r20
+18K17*p_cases_io[4|43] 13|4r20
+21K17*p_int_io[8|46] 13|5r20
+25A14*TV_Gaudi(11R14)<integer> 13|15r34 14|25r34
+X 13 p_vue_text.ads
+6K9*p_vue_text 28l5 28e15 14|2b14 67l5 67t15
+9U13*afficheEtoile 9>27 14|3b13 12l7 12t20 35s7 54s5
+9i27 nb{integer} 14|3b27 7r17
+12U13*afficheBarre 12>26 14|14b13 23l7 23t19 36s7 52s7
+12i26 nb{integer} 14|14b26 18r17
+15U13*afficheGrille 15>27 14|25b13 55l7 55t20
+15a27 V{12|25A14} 14|25b27 39r18 41r12 42r15 45r15
+X 14 p_vue_text.adb
+7i9 j{integer}
+18i9 j{integer}
+27i5 k{integer} 38m7 39r13 41r14 42r17 45r17 48m9 48r14
+30e9 i{character} 31r17
+34i9 j{integer} 37r11 38r12
+X 15 sequenio.ads
+24k17*Sequential_IO 13|1w6
+X 30 text_io.ads
+24K9*Text_IO=24:29 13|2w6 2r19 14|1w6 1r19
+
