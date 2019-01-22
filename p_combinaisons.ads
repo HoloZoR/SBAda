@@ -12,7 +12,10 @@ package p_combinaisons is
 		nom	:	string(1..2); -- nom de la case (ex : "A1")
 		valeur	:	positive;  -- nombre port� par la case (ex : 14)
 	end record;
-
+	----------------déclarations de vecteur pour partie 3-------------------------
+	----- vecteur de Case -----
+	type TV_Case is array (positive range <>) of string;
+	type TV_etatCase is array (positive range <>) of boolean;
 
 	---- Instanciation de sequential_IO pour le fichier de description de la grille ---------------------------------
 	package p_cases_io is new sequential_IO (TR_Case); use p_Cases_IO;
@@ -49,9 +52,14 @@ package p_combinaisons is
 	function contigue2cases(C1, C2 : in string) return boolean;
 	--{sol repr�sente une solution} => {r�sultat = vrai si 2 cases sont contigues}
 
+	function checkCont(V : in TV_etatCase) return boolean is
+	--{} => { retourne si les éléments sont contigue}
 
-	-- function est_contigue(sol : in string) return boolean;
-	-- 	--{sol repr�sente une solution} => {r�sultat = vrai si sol est une solution contig�e}
+	function indFalse(V : in TV_etatCase) return integer;
+	--{} => { retourne la valeur du première indice à false}
+
+	function est_contigue(sol : in string) return boolean;
+		--{sol repr�sente une solution} => {r�sultat = vrai si sol est une solution contig�e}
 
 	-- procedure CreeFicsolcont(fsol, fcont : in out text_io.file_type) ;
 	-- -- {fsol ouvert} => {fcont contient les combinaisons contig�es de fsol et est structur� de la m�me fa�on}
