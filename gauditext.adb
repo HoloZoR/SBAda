@@ -1,7 +1,7 @@
 
-procedure Procedure is
-  test : integer;
+procedure gauditext is
+
 
 begin -- Procedure
 
-end Procedure;
+end gauditext;

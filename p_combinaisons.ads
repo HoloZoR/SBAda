@@ -42,9 +42,13 @@ package p_combinaisons is
 	-- {fsol ouvert, f- = <>}
 	-- => {r�sultat = cha�ne repr�sentant la solution numsol lue dans fsol pour une combinaison de nbcases}
 
+	function contigue2cases(C1, C2 : in string) return boolean;
+	--{sol repr�sente une solution} => {r�sultat = vrai si 2 cases sont contigues}
+
+
 	-- function est_contigue(sol : in string) return boolean;
 	-- 	--{sol repr�sente une solution} => {r�sultat = vrai si sol est une solution contig�e}
-	--
+
 	-- procedure CreeFicsolcont(fsol, fcont : in out text_io.file_type) ;
 	-- -- {fsol ouvert} => {fcont contient les combinaisons contig�es de fsol et est structur� de la m�me fa�on}
 

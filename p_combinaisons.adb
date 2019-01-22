@@ -232,6 +232,22 @@ begin
   ---------fin--------------
 end Combi;
 ------------------------------nbCombi-------------------------------------------
+
+	function contigue2cases(C1, C2 : in string) return boolean is
+	--{sol repr�sente une solution} => {r�sultat = vrai si 2 cases sont contigues}
+    col1, col2 : character;
+    lig1, lig2 : T_Lig;
+  begin
+    col1 := C1(C1'First);
+    lig1 := T_Lig'Value('0' & C1(C1'First + 1));
+    col2 := C2(C2'First);
+    lig2 := T_Lig'Value('0' & C2(C2'First + 1));
+    return((col1 = col2 and (lig1 = lig2 +1 or lig1 = lig2 -1))
+        or (lig1 = lig2 and (col1 = T_Col'succ(col2) or col1 = T_Col'pred(col2)))
+        or ((lig1 = lig2 +1 or lig1 = lig2 -1) and (col1 = T_Col'succ(col2) or col1 = T_Col'pred(col2))));
+
+  end contigue2cases;
+
 -- function est_contigue(sol : in string) return boolean is
 --   --{sol repr�sente une solution} => {r�sultat = vrai si sol est une solution contig�e}
 --   ---- record de Case ----
