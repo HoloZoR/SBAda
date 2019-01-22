@@ -4,7 +4,7 @@ with sequential_IO;
 use p_combinaisons.p_cases_IO;
 use p_combinaisons.p_int_io;
 
-procedure TestCombinaisons is
+procedure Testcombinaisons is
   f : p_cases_IO.file_type;
   V : TV_Gaudi(1..16);
   fsol : text_io.file_type;
@@ -22,8 +22,10 @@ begin -- TestCombinaisons
   -------------------------------
   open(fsol, in_file, "fsol.txt");
   CreeFicsol(V, fsol);
-  ecrire(nbCombi(fsol, 3));
-
+  reset(fsol, in_file);
+  ecrire_ligne(nbCombi(fsol, 4));
+  reset(fsol, in_file);
+  ecrire(combi(fsol, 3, 10));
   close(fsol);
   -------------------------------
 
