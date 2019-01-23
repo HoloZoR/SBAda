@@ -302,7 +302,8 @@
         j := j + 2;
       end loop; -- Vecteur initiliser par les cases de sol et contigue = true
       --------------------------------------------------------------------------
-      while i <= V'Last and then (indTest <= V'last and indCont /= i-1) loop
+      i := V'first + 1;
+      while i <= V'Last and then not (indTest <= V'last and indCont /= i-1) loop
         if contigue2cases(indCont, indTest) then
           permut(V(i), V(indTest));
           i := i + 1;
@@ -314,7 +315,7 @@
           indTest := indTest + 1;
         end if;
       end loop;
-      return (indTest < V'last + 1 and indCont /= i-1);
+      return (indTest <= V'Last and indCont /= i-1);
     end est_contigue;
 
     -- procedure CreeFicsolcont(fsol, fcont : in out text_io.file_type)  is
