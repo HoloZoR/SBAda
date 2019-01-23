@@ -1,7 +1,6 @@
     with text_io; use text_io;
 
     package body p_combinaisons is
-    ---------------------------procedure--------------------------------------------
     ---------------------------CreeVectGaudi----------------------------------------
     procedure CreeVectGaudi(f : in out p_cases_IO.file_type; V : out TV_Gaudi) is
     -- {f ouvert, V de taille suffisante} => {le contenu de f a �t� copi� dans V}
@@ -41,7 +40,8 @@
           i := i + 1;
         end loop;
     end TriVectGaudi;
-    ----------------------------CreeFicsolcont--------------------------------------
+    ----------------------------fin tri vect gaudi------------------------------
+    ----------------------------CreeFicsolcont----------------------------------
     procedure CreeFicsol(V : in TV_Gaudi; fsol : in out text_io.file_type) is
     -- {f ouvert en �criture, V Tri� par nom de case}
     --	=> 	{fsol contient toutes les combinaisons gagnantes et est structuré selon le format défini (cf. sujet)}
@@ -52,14 +52,19 @@
       lg : integer;
     begin
       reset(fsol, out_file);
+      --------------------------------------------------------------------------
+      --------------------Fichier intermediaire---------------------------------
       create(fsol3, out_file, "fsol3.txt");
       create(fsol4, out_file, "fsol4.txt");
       create(fsol5, out_file, "fsol5.txt");
       create(fsol6, out_file, "fsol6.txt");
       create(fsol7, out_file, "fsol7.txt");
+      --------------------------------------------------------------------------
+
       for i1 in V'First..V'Last loop
         for i2 in i1+1..V'Last loop
     -- 3 cases
+          ---------Ecriture du fichier Fsol3---------
           for i3 in i2+1..V'Last loop
             somme := V(i1).valeur+V(i2).valeur+V(i3).valeur;
             if somme = 33 then
@@ -70,6 +75,7 @@
               nb_combi3 := nb_combi3 +1;
             elsif somme < 33 then
     -- 4 cases
+            ---------Ecriture du fichier Fsol4---------
               for i4 in i3+1..V'Last loop
                 somme := V(i1).valeur+V(i2).valeur+V(i3).valeur+V(i4).valeur;
                 if somme = 33 then
@@ -81,6 +87,7 @@
                   nb_combi4 := nb_combi4 +1;
                 elsif somme < 33 then
     -- 5 cases
+            ---------Ecriture du fichier Fsol5---------
                   for i5 in i4+1..V'Last loop
                     somme := V(i1).valeur+V(i2).valeur+V(i3).valeur+V(i4).valeur+V(i5).valeur;
                     if somme = 33 then
@@ -93,6 +100,7 @@
                       nb_combi5 := nb_combi5 +1;
                     elsif somme < 33 then
     -- 6 cases
+            ---------Ecriture du fichier Fsol6---------
                       for i6 in i5+1..V'Last loop
                         somme := V(i1).valeur+V(i2).valeur+V(i3).valeur+V(i4).valeur+V(i5).valeur+V(i6).valeur;
                         if somme = 33 then
@@ -106,6 +114,7 @@
                           nb_combi6 := nb_combi6 +1;
                         elsif somme < 33 then
     -- 7 cases
+            ---------Ecriture du fichier Fsol7---------
                           for i7 in i6+1..V'Last loop
                             somme := V(i1).valeur+V(i2).valeur+V(i3).valeur+V(i4).valeur+V(i5).valeur+V(i6).valeur+V(i7).valeur;
                             if somme = 33 then
@@ -136,7 +145,8 @@
 
         end loop;
       end loop;
-
+      ---------------------fin ecriture fichiers intermediaire------------------
+      ---------------------concaténation des fichiers dans fsol-----------------
       put(fsol,3,1); put(fsol,' '); put(fsol,nb_combi3,1); new_line(fsol);
       reset(fsol3, in_file);
       while not end_of_file(fsol3) loop
@@ -181,11 +191,9 @@
       close(fsol5);
       close(fsol6);
       close(fsol7);
+      -----------------fin concaténation des fichiers dans fsol-----------------
 
     end CreeFicsol;
-
-
-    ---------------------------function---------------------------------------------
     ---------------------------nbCombi----------------------------------------------
     function nbCombi(fsol : in text_io.file_type; nbcases : in T_nbcases) return natural is
     -- {fsol ouvert, f- = <>} => {r�sultat = nombre de combinaisons en nbcases dans fsol}
@@ -240,11 +248,12 @@
       j : integer;
     begin
       reset(fsol, in_file);
+      -------affichage de l'entête----------
       nbCb := nbCombi(fsol,nbcases);
       put("* "); put(nbCb,1);
       put(" solutions en "); put(nbcases,1); put_Line(" cases");
       put_Line("-------------------------");
-
+      -------affichage solutions------------
       for i in 1..nbcb loop
         j:=1;
         reset(fsol, in_file);
@@ -260,105 +269,109 @@
           j := j+2;
         end loop;
       end loop;
-
-
+      -------fin affichage--------
     end Affichage;
 
-    -- 
-    -- function contigue2cases(C1, C2 : in string) return boolean is
-    -- --{sol repr�sente une solution} => {r�sultat = vrai si 2 cases sont contigues}
-    --     col1, col2 : character;
-    --     lig1, lig2 : T_Lig;
-    -- begin
-    --     col1 := C1(C1'First);
-    --     lig1 := T_Lig'Value('0' & C1(C1'First + 1));
-    --     col2 := C2(C2'First);
-    --     lig2 := T_Lig'Value('0' & C2(C2'First + 1));
-    --       return((col1 = col2 and (lig1 = lig2 +1 or lig1 = lig2 -1))
-    --       or (lig1 = lig2 and (col1 = T_Col'succ(col2) or col1 = T_Col'pred(col2)))
-    --       or ((lig1 = lig2 +1 or lig1 = lig2 -1) and (col1 = T_Col'succ(col2) or col1 = T_Col'pred(col2))));
-    --
-    -- end contigue2cases;
-    --
-    -- function indFalse(V : in TV_etatCase) return integer is
-    -- --{} => { retourne la valeur du première indice à false}
-    --   i : integer := V'First;
-    -- begin
-    --   while i < V'last + 1 and then V(i) /= 0 loop
-    --     i := i + 1;
-    --   end loop;
-    --   return i;
-    -- end indFalse;
-    -- function checkCont(V : in TV_etatCase) return boolean is
-    -- --{} => { retourne si les éléments sont contigue}
-    -- begin
-    --   return indFalse(v) = V'last;
-    -- end indFalse;
-    --
-    --
-    -- function est_contigue(sol : in string) return boolean is
-    --   --{sol repr�sente une solution} => {r�sultat = vrai si sol est une solution contig�e}
-    --   ----- declatation de mes variables
-    --   Vc : TV_Case(1..(sol'length/2)); -- vecteur de la taille de sol/2 possédent les cases
-    --   Ve : TV_etatCase(1..(sol'length/2)); -- vecteur de la taille de sol/2 possédent l'état d'une cases
-    --   i,j : positive := V'first;
-    --   indVal : positive := V'first;
-    --   contigue : boolean := false;
-    -- begin
-    --   -- Initialisation de V --
-    --   while i < Vc'last + 1 loop
-    --     Vc(i) := sol(j)&sol(j+1);
-    --     i := i + 1;
-    --     j := j + 2;
-    --   end loop; -- Vecteur initiliser par les cases de sol et contigue = true
-    --   Ve := (true, others => false);
-    --   ------------------------------------------------------------------------
-    --   while not contigue loop
-    --     j := indFalse(Ve)
-    --     if contigue2cases(indVal, j) then
-    --       Ve(j) := true;
-    --       indVal := indVal + 1;
-    --     else
-    --     end if;
-    --     contigue = checkCont(Ve);
-    --   end loop;
-    --
-    -- end est_contigue;
-    --
-    -- procedure CreeFicsolcont(fsol, fcont : in out text_io.file_type)  is
-    -- -- {fsol ouvert} => {fcont contient les combinaisons contig�es de fsol et est structur� de la m�me fa�on}
-    --   val : string(1..15);
-    --   lg : integer;
-    --   type TV_Contigu is array (positive range <>) of string;
-    --   V : TV_Contigu (1..35);
-    --   i : integer;
-    --   nbcases : integer;
-    -- begin
-    --   reset(fsol, in_file);
-    --   reset(fcont, out_file);
-    --   nbcases := 3;
-    --   while not end_of_file(fsol) loop
-    --     i := V'First;
-    --     skip_line(fsol);
-    --     while not end_of_page(fsol) loop
-    --       get_line(fsol,val,lg);
-    --       if est_contigue(val(1..lg)) then
-    --         V(i) := val(1..lg);
-    --         i := i+1;
-    --       end if;
-    --     end loop;
-    --     put(fcont, nbcases, 1);
-    --     put(fcont,' ');
-    --     put(fcont, i, 1);
-    --     for j in 1..i loop
-    --       put_line(fcont, V(j));
-    --
-    --     end loop;
-    --     new_page(fcont);
-    --     nbcases := nbcases +1;
-    --
-    --   end loop;
-    -- end CreeFicsolcont;
+
+    function contigue2cases(C1, C2 : in string) return boolean is
+    --{sol repr�sente une solution} => {r�sultat = vrai si 2 cases sont contigues}
+        col1, col2 : character;
+        lig1, lig2 : T_Lig;
+    begin
+        col1 := C1(C1'First);
+        lig1 := T_Lig'Value('0' & C1(C1'First + 1));
+        col2 := C2(C2'First);
+        lig2 := T_Lig'Value('0' & C2(C2'First + 1));
+          return((col1 = col2 and (lig1 = lig2 +1 or lig1 = lig2 -1))
+          or (lig1 = lig2 and (col1 = T_Col'succ(col2) or col1 = T_Col'pred(col2)))
+          or ((lig1 = lig2 +1 or lig1 = lig2 -1) and (col1 = T_Col'succ(col2) or col1 = T_Col'pred(col2))));
+
+    end contigue2cases;
+    procedure permut(a, b: in out string) is
+      -- {} => {les valeurs de a et b ont été échangées}
+      temp: string(a'range);
+    begin
+      temp := a;
+      a := b;
+      b := temp;
+    end permut;
+    function est_contigue(sol : in string) return boolean is
+      --{sol repr�sente une solution} => {r�sultat = vrai si sol est une solution contig�e}
+      ----- declatation de mes variables
+      V : TV_Case(1..(sol'length/2)); -- vecteur de la taille de sol/2 possédent les cases
+      i : positive := V'first;
+      indTest : positive := V'first + 1;
+      indCont: positive := V'first;
+      j : positive := V'first;
+      permutation : boolean := false;
+    begin
+      -- Initialisation de V --
+      while i < V'last + 1 loop
+        V(i) := sol(j..j+1);
+        i := i + 1;
+        j := j + 2;
+      end loop; -- Vecteur initiliser par les cases de sol et contigue = true
+      --------------------------------------------------------------------------
+      i := V'first + 1;
+        new_line;
+      while (i <= V'Last and indCont <= V'last) and then not (indTest = V'last + 1 and indCont = i-1 and not permutation) loop
+        -- put(indCont, 1);
+        -- put(' ');
+        -- put(indTest, 1);
+        if contigue2cases(V(indCont), V(indTest)) then
+          permut(V(i), V(indTest));
+          permutation := true;
+          i := i + 1;
+          -- put_line(" Vrai");
+        else
+          permutation := false;
+          -- put_line(" Faux");
+        end if;
+        if indTest = V'Last then
+          indCont := indCont + 1;
+          indTest := i;
+        else
+          indTest := indTest + 1;
+        end if;
+      end loop;
+      return i = V'Last + 1;
+    end est_contigue;
+
+    procedure CreeFicsolcont(fsol, fcont : in out text_io.file_type)  is
+    -- {fsol ouvert} => {fcont contient les combinaisons contig�es de fsol et est structur� de la m�me fa�on}
+      val : string(1..15);
+      lg : integer;
+      type TV_Contigu is array (positive range <>) of string (1..15);
+      V : TV_Contigu (1..35);
+      i : integer;
+      nbcases : integer;
+    begin
+      reset(fsol, in_file);
+      reset(fcont, out_file);
+      nbcases := 3;
+      while not end_of_file(fsol) loop
+        i := V'First;
+        skip_line(fsol);
+        while not end_of_page(fsol) loop
+          get_line(fsol,val,lg);
+          if est_contigue(val(1..lg)) then
+            V(i) := "               ";
+            V(i) := val(1..lg) & V(i)(lg+1..15);
+            i := i+1;
+          end if;
+        end loop;
+        put(fcont, nbcases, 1);
+        put(fcont,' ');
+        put(fcont, i, 1);
+        for j in 1..i loop
+          put_line(fcont, V(j));
+
+        end loop;
+        new_page(fcont);
+        nbcases := nbcases +1;
+
+      end loop;
+    end CreeFicsolcont;
 
     ----------------------------fin-------------------------------------------------
     end p_combinaisons;

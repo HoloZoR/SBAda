@@ -7,8 +7,8 @@ use p_combinaisons.p_int_io;
 procedure TestCombinaisons is
   f : p_cases_IO.file_type;
   V : TV_Gaudi(1..16);
-  fsol : text_io.file_type;
-
+  fsol, fcont : text_io.file_type;
+  b : boolean;
 begin -- TestCombinaisons
   -------CreeVectGaudi------------
   open(f, in_file, "CarreGaudi");
@@ -38,8 +38,22 @@ begin -- TestCombinaisons
   Affichage(fsol,6);
   Affichage(fsol,7);
 
-  est_contigue("A1A2B2C2D3");
-  est_contigue("A1A2B2C2D3A4");
+  b := est_contigue("A1A2B2C2D3");
+  ecrire("A1A2B2C2D3"); ecrire(b);
+  b := est_contigue("A1A2B2C2D3A4");
+  ecrire("A1A2B2C2D3A4"); ecrire(b);
+  b := est_contigue("A1A2C2D3");
+  ecrire("A1A2C2D3"); ecrire(b);
+  b := est_contigue("A1A2B1B2C1C2");
+  ecrire("A1A2B1B2C1C2"); ecrire(b);
+  b := est_contigue("A1A2B3A4B2C2D3");
+  ecrire("A1A2B3A4B2C2D3"); ecrire(b);
+
+
+
+  create(fcont, in_file, "fcont.txt");
+
+  CreeFicsolcont(fsol,fcont);
 
 
 
