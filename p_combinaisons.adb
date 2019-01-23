@@ -295,15 +295,58 @@
       a := b;
       b := temp;
     end permut;
+
+    procedure triBullesSurLettre(V : in out string) is
+    -- {} => {V trié par ordre croissant sur la lettre d'une case}
+      i : integer := V'first;
+      permutation: boolean := true;
+    begin
+      while permutation loop
+        permutation := false;
+        for j in reverse i+1..V'last loop
+          if V(j) < V(j-1) then
+            permut(V(j), V(j-1));
+            permutation := true;
+          end if;
+        end loop;
+        i := i+1;
+      end loop;
+    end triBullesSurLettre;
+
+    procedure triBullesSurNombre(V : in out TV_Case) is
+    -- {} => {V trié par ordre croissant sur le numero de case}
+      i : integer := V'first;
+      permutation: boolean := true;
+    begin
+      while permutation loop
+        permutation := false;
+        for j in reverse i+1..V'last loop
+          if V(j)(2) < V(j-1)(2) then
+            permut(V(j), V(j-1));
+            permutation := true;
+          end if;
+        end loop;
+        i := i+1;
+      end loop;
+    end triBullesSurNombre;
+
+    function SuccDeContigue(V : in TV_Case) return  is
+    -- {} => {vrai si tout les élément sont contigue 1 à 1 entre eux}
+      i : integer := V'first + 1;
+    begin -- SuccDeContigue
+      while i <= V'Last and then contigue2cases(V(i-1), V(i)) loop
+        i := i + 1;
+      end loop;
+      return i = V'Last + 1;
+    end SuccDeContigue;
+
     function est_contigue(sol : in string) return boolean is
       --{sol repr�sente une solution} => {r�sultat = vrai si sol est une solution contig�e}
       ----- declatation de mes variables
       V : TV_Case(1..(sol'length/2)); -- vecteur de la taille de sol/2 possédent les cases
       i : positive := V'first;
-      indTest : positive := V'first + 1;
-      indCont: positive := V'first;
       j : positive := V'first;
-      permutation : boolean := false;
+      cont1, cont2 : boolean;
     begin
       -- Initialisation de V --
       while i < V'last + 1 loop
@@ -312,29 +355,12 @@
         j := j + 2;
       end loop; -- Vecteur initiliser par les cases de sol et contigue = true
       --------------------------------------------------------------------------
-      i := V'first + 1;
-        new_line;
-      while (i <= V'Last and indCont <= V'last) and then not (indTest = V'last + 1 and indCont = i-1 and not permutation) loop
-        -- put(indCont, 1);
-        -- put(' ');
-        -- put(indTest, 1);
-        if contigue2cases(V(indCont), V(indTest)) then
-          permut(V(i), V(indTest));
-          permutation := true;
-          i := i + 1;
-          -- put_line(" Vrai");
-        else
-          permutation := false;
-          -- put_line(" Faux");
-        end if;
-        if indTest = V'Last then
-          indCont := indCont + 1;
-          indTest := i;
-        else
-          indTest := indTest + 1;
-        end if;
-      end loop;
-      return i = V'Last + 1;
+      triBullesSurLettre(V);
+      cont1 := SuccDeContigue(V);
+      triBullesSurNombre(v);
+      cont2 := SuccDeContigue(V);
+      --------------------------------------------------------------------------
+      return cont1 or cont2;
     end est_contigue;
 
     procedure CreeFicsolcont(fsol, fcont : in out text_io.file_type)  is
