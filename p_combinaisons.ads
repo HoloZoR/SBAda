@@ -14,8 +14,7 @@ package p_combinaisons is
 	end record;
 	----------------déclarations de vecteur pour partie 3-------------------------
 	----- vecteur de Case -----
-	type TV_Case is array (positive range <>) of string;
-	type TV_etatCase is array (positive range <>) of boolean;
+	type TV_Case is array (positive range <>) of string(1..2);
 
 	---- Instanciation de sequential_IO pour le fichier de description de la grille ---------------------------------
 	package p_cases_io is new sequential_IO (TR_Case); use p_Cases_IO;
@@ -58,7 +57,7 @@ package p_combinaisons is
 	function est_contigue(sol : in string) return boolean;
 		--{sol repr�sente une solution} => {r�sultat = vrai si sol est une solution contig�e}
 
-	-- procedure CreeFicsolcont(fsol, fcont : in out text_io.file_type) ;
-	-- -- {fsol ouvert} => {fcont contient les combinaisons contig�es de fsol et est structur� de la m�me fa�on}
+	procedure CreeFicsolcont(fsol, fcont : in out text_io.file_type) ;
+	-- {fsol ouvert} => {fcont contient les combinaisons contig�es de fsol et est structur� de la m�me fa�on}
 
 end p_combinaisons;

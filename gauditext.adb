@@ -1,5 +1,4 @@
 with text_io, p_vue_text; use text_io, p_vue_text;
-with p_esiut; use p_esiut;
 with p_combinaisons; use p_combinaisons;
 with sequential_IO;
 use p_combinaisons.p_cases_IO;
@@ -24,7 +23,15 @@ begin -- Procedure
 
   -------------------------------
   while true loop
-    put("Choisissez un nombre de cases : "); get(nbcases);
+    loop
+      begin
+        put("Choisissez un nombre de cases : "); get(nbcases);
+        exit;
+      exception
+        when Constraint_Error =>
+          put_line("Le nombre de cases doit être entre 3 et 7");
+      end;
+    end loop;
     afficheGrille(V);
     Affichage(fsol,nbcases);
     skip_line;
