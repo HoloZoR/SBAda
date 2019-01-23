@@ -295,6 +295,58 @@
       a := b;
       b := temp;
     end permut;
+    function firstContigue(V : in TV_Case) return boolean is
+    --{} => {return Vrai si au moins un élément du vecteur est contigue au première élément}
+      i :integer := V'first + 1;
+    begin -- firstContigue
+      while i <= V'last and then contigue2cases(V(V'First), V(i)) = false loop
+        i := i + 1;
+      end loop;
+      return i <= V'last;
+    end firstContigue;
+
+    -- function est_contigue(sol : in string) return boolean is
+    --   --{sol repr�sente une solution} => {r�sultat = vrai si sol est une solution contig�e}
+    --   ----- declatation de mes variables
+    --   V : TV_Case(1..(sol'length/2)); -- vecteur de la taille de sol/2 possédent les cases
+    --   i : integer := V'first;
+    --   j : integer := V'first;
+    --   indCont : integer := V'First + 1;
+    --   indTest : integer := V'First;
+    --   permutation : boolean := False;
+    -- begin
+    --   -- Initialisation de V --
+    --   while i < V'last + 1 loop
+    --     V(i) := sol(j..j+1);
+    --     i := i + 1;
+    --     j := j + 2;
+    --   end loop; -- Vecteur initiliser par les cases de sol et contigue = true
+    --   --------------------------------------------------------------------------
+    --
+    --   while indCont < V'last  loop
+    --     indTest := indCont;
+    --     permutation := False;
+    --     while indTest < V'length and not permutation loop
+    --       i := 1;
+    --       while i < indCont and not permutation loop
+    --         if contigue2cases(V(indTest), v(i)) then
+    --           permut(V(indCont), V(indTest));
+    --           indCont := indCont + 1;
+    --           permutation := true;
+    --         else
+    --           i := i + 1;
+    --         end if;
+    --       end loop;
+    --       indTest := indTest + 1;
+    --     end loop;
+    --     if not permutation then
+    --       return false;
+    --     end if;
+    --   end loop;
+    --   return true;
+    --   --------------------------------------------------------------------------
+    -- end est_contigue;
+
     function est_contigue(sol : in string) return boolean is
       --{sol repr�sente une solution} => {r�sultat = vrai si sol est une solution contig�e}
       ----- declatation de mes variables
@@ -304,6 +356,7 @@
       indCont: positive := V'first;
       j : positive := V'first;
       permutation : boolean := false;
+
     begin
       -- Initialisation de V --
       while i < V'last + 1 loop
@@ -313,63 +366,74 @@
       end loop; -- Vecteur initiliser par les cases de sol et contigue = true
       --------------------------------------------------------------------------
       i := V'first + 1;
-        new_line;
-      while (i <= V'Last and indCont <= V'last) and then not (indTest = V'last + 1 and indCont = i-1 and not permutation) loop
-        -- put(indCont, 1);
-        -- put(' ');
-        -- put(indTest, 1);
-        if contigue2cases(V(indCont), V(indTest)) then
-          permut(V(i), V(indTest));
-          permutation := true;
-          i := i + 1;
-          -- put_line(" Vrai");
-        else
-          permutation := false;
-          -- put_line(" Faux");
-        end if;
-        if indTest = V'Last then
-          indCont := indCont + 1;
-          indTest := i;
-        else
-          indTest := indTest + 1;
-        end if;
-      end loop;
-      return i = V'Last + 1;
+
+      if firstContigue(V) then
+        while (i <= V'Last and indCont <= i) and then not (indTest = V'last + 1 and indCont = i-1 and not permutation) loop
+          put(indCont, 1);
+          put(' ');
+          put(indTest, 1);
+          if contigue2cases(V(indCont), V(indTest)) then
+            permut(V(i), V(indTest));
+            permutation := true;
+            i := i + 1;
+            put_line(" Vrai");
+          else
+            permutation := false;
+            put_line(" Faux");
+          end if;
+          if indTest = V'Last then
+            indCont := indCont + 1;
+            indTest := i;
+          else
+            indTest := indTest + 1;
+          end if;
+
+        end loop;
+        return i = V'Last + 1;
+      else
+        return false;
+      end if;
     end est_contigue;
 
     procedure CreeFicsolcont(fsol, fcont : in out text_io.file_type)  is
     -- {fsol ouvert} => {fcont contient les combinaisons contig�es de fsol et est structur� de la m�me fa�on}
       val : string(1..15);
       lg : integer;
-      type TV_Contigu is array (positive range <>) of string (1..15);
-      V : TV_Contigu (1..35);
+      ftemp : text_io.file_type;
       i : integer;
       nbcases : integer;
+      nb : integer;
     begin
       reset(fsol, in_file);
       reset(fcont, out_file);
+      create(ftemp, out_file, "ftemp.txt");
       nbcases := 3;
       while not end_of_file(fsol) loop
-        i := V'First;
-        skip_line(fsol);
-        while not end_of_page(fsol) loop
+        i := 0;
+        get(fsol,nb);
+        get(fsol,nb);
+        reset(ftemp, out_file);
+        for j in 1..nb + 1 loop
           get_line(fsol,val,lg);
           if est_contigue(val(1..lg)) then
-            V(i) := "               ";
-            V(i) := val(1..lg) & V(i)(lg+1..15);
+            put_line(ftemp,val(1..lg));
             i := i+1;
           end if;
         end loop;
+
         put(fcont, nbcases, 1);
         put(fcont,' ');
         put(fcont, i, 1);
+        new_line(fcont);
+        reset(ftemp, in_file);
+
         for j in 1..i loop
-          put_line(fcont, V(j));
+          get_line(ftemp,val,lg);
+          put_line(fcont, val(1..lg));
 
         end loop;
         new_page(fcont);
         nbcases := nbcases +1;
-
       end loop;
     end CreeFicsolcont;
 
