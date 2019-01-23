@@ -49,14 +49,11 @@ package p_combinaisons is
 	procedure Affichage(fsol : in out text_io.file_type; nbcases : in T_nbcases);
 	-- {fsol ouvert} => {Affiche toutes les combinaisons pour un nombre de case donnés}
 
+	procedure permut(a, b: in out string);
+		-- {} => {les valeurs de a et b ont été échangées}
+
 	function contigue2cases(C1, C2 : in string) return boolean;
 	--{sol repr�sente une solution} => {r�sultat = vrai si 2 cases sont contigues}
-
-	function checkCont(V : in TV_etatCase) return boolean is
-	--{} => { retourne si les éléments sont contigue}
-
-	function indFalse(V : in TV_etatCase) return integer;
-	--{} => { retourne la valeur du première indice à false}
 
 	function est_contigue(sol : in string) return boolean;
 		--{sol repr�sente une solution} => {r�sultat = vrai si sol est une solution contig�e}

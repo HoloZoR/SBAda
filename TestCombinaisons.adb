@@ -38,5 +38,9 @@ begin -- TestCombinaisons
   Affichage(fsol,6);
   Affichage(fsol,7);
 
+  est_contigue("A1A2B2C2D3");
+  est_contigue("A1A2B2C2D3A4");
+
+
 
 end TestCombinaisons;

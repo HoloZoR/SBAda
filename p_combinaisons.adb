@@ -279,50 +279,42 @@
           or ((lig1 = lig2 +1 or lig1 = lig2 -1) and (col1 = T_Col'succ(col2) or col1 = T_Col'pred(col2))));
 
     end contigue2cases;
-
-    function indFalse(V : in TV_etatCase) return integer is
-    --{} => { retourne la valeur du première indice à false}
-      i : integer := V'First;
+    procedure permut(a, b: in out string) is
+      -- {} => {les valeurs de a et b ont été échangées}
+      temp: string;
     begin
-      while i < V'last + 1 and then V(i) /= 0 loop
-        i := i + 1;
-      end loop;
-      return i;
-    end indFalse;
-    function checkCont(V : in TV_etatCase) return boolean is
-    --{} => { retourne si les éléments sont contigue}
-    begin
-      return indFalse(v) = V'last;
-    end indFalse;
-
-
+      temp := a;
+      a := b;
+      b := temp;
+    end permut;
     function est_contigue(sol : in string) return boolean is
       --{sol repr�sente une solution} => {r�sultat = vrai si sol est une solution contig�e}
       ----- declatation de mes variables
-      Vc : TV_Case(1..(sol'length/2)); -- vecteur de la taille de sol/2 possédent les cases
-      Ve : TV_etatCase(1..(sol'length/2)); -- vecteur de la taille de sol/2 possédent l'état d'une cases
-      i,j : positive := V'first;
-      indVal : positive := V'first;
-      contigue : boolean := false;
+      V : TV_Case(1..(sol'length/2)); -- vecteur de la taille de sol/2 possédent les cases
+      i, indTest : positive := V'first + 1;
+      indCont: positive := V'first;
+      permut : boolean := false;
     begin
       -- Initialisation de V --
-      while i < Vc'last + 1 loop
-        Vc(i) := sol(j)&sol(j+1);
+      while i < V'last + 1 loop
+        V(i) := sol(j)&sol(j+1);
         i := i + 1;
         j := j + 2;
       end loop; -- Vecteur initiliser par les cases de sol et contigue = true
-      Ve := (true, others => false);
-      ------------------------------------------------------------------------
-      while not contigue loop
-        j := indFalse(Ve)
-        if contigue2cases(indVal, j) then
-          Ve(j) := true;
-          indVal := indVal + 1;
-        else
+      --------------------------------------------------------------------------
+      while i <= V'Last and then (indTest <= V'last and indCont /= i-1) loop
+        if contigue2cases(indCont, indTest) then
+          permut(V(i), V(indTest));
+          i := i + 1;
         end if;
-        contigue = checkCont(Ve);
+        if indTest = V'Last then
+          indCont := indCont + 1;
+          indTest := i;
+        else
+          indTest := indTest + 1;
+        end if;
       end loop;
-
+      return (indTest < V'last + 1 and indCont /= i-1);
     end est_contigue;
 
     -- procedure CreeFicsolcont(fsol, fcont : in out text_io.file_type)  is
