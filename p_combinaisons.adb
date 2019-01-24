@@ -307,45 +307,45 @@
     end firstContigue;
     ------------------------est_contigue--------------------------------------
     function est_contigue(sol : in string) return boolean is
-      --{sol repr�sente une solution} => {r�sultat = vrai si sol est une solution contig�e}
-      ----- declatation de mes variables
-      V : TV_Case(1..(sol'length/2)); -- vecteur de la taille de sol/2 possédent les cases
-      i : integer := V'first;
-      j : integer := V'first;
-      indCont : integer := V'First + 1;
-      indTest : integer := V'First;
-      permutation : boolean := False;
-    begin
-      -- Initialisation de V --
-      while i < V'last + 1 loop
-        V(i) := sol(j..j+1);
-        i := i + 1;
-        j := j + 2;
-      end loop; -- Vecteur initiliser par les cases de sol et contigue = true
-      --------------------------------------------------------------------------
+          --{sol repr�sente une solution} => {r�sultat = vrai si sol est une solution contig�e}
+          ----- declatation de mes variables
+          V : TV_Case(1..(sol'length/2)); -- vecteur de la taille de sol/2 possédent les cases
+          i : positive := V'first;
+          indTest : positive := V'first + 1;
+          indCont: positive := V'first;
+          j : positive := V'first;
+          permutation : boolean := false;
 
-      while indCont < V'last  loop
-        indTest := indCont;
-        permutation := False;
-        while indTest < V'length and not permutation loop
-          i := 1;
-          while i < indCont and not permutation loop
-            if contigue2cases(V(indTest), v(i)) then
-              permut(V(indCont), V(indTest));
-              indCont := indCont + 1;
-              permutation := true;
-            else
-              i := i + 1;
-            end if;
-          end loop;
-          indTest := indTest + 1;
-        end loop;
-        if not permutation then
-          return false;
-        end if;
-      end loop;
-      return true;
-      --------------------------------------------------------------------------
+        begin
+          -- Initialisation de V --
+          while i < V'last + 1 loop
+            V(i) := sol(j..j+1);
+            i := i + 1;
+            j := j + 2;
+          end loop; -- Vecteur initiliser par les cases de sol et contigue = true
+          --------------------------------------------------------------------------
+          i := V'first + 1;
+
+          if firstContigue(V) then
+            while (i <= V'Last and indCont <= i) and then not (indTest = V'last + 1 and indCont = i-1 and not permutation) loop
+              if contigue2cases(V(indCont), V(indTest)) then
+                permut(V(i), V(indTest));
+                permutation := true;
+                i := i + 1;
+              else
+                permutation := false;
+              end if;
+              if indTest = V'Last then
+                indCont := indCont + 1;
+                indTest := i;
+              else
+                indTest := indTest + 1;
+              end if;
+            end loop;
+            return i = V'Last + 1;
+          else
+            return false;
+          end if;
     end est_contigue;
     ------------------------CréeFicsolcont--------------------------------------
     procedure CreeFicsolcont(fsol, fcont : in out text_io.file_type)  is

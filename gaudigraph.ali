@@ -5,19 +5,18 @@ A -gnato
 P SS ZX
 
 RN
+RV NO_IO
 RV NO_SECONDARY_STACK
-RV NO_STANDARD_STORAGE_POOLS
 RV NO_DEFAULT_INITIALIZATION
-RV NO_DYNAMIC_SIZED_OBJECTS
 RV SPARK_05
 
-U gaudigraph%b		gaudigraph.adb		a5dec369 NE OO SU IL
-W ada.tags%s		a-tags.adb		a-tags.ali
+U gaudigraph%b		gaudigraph.adb		afd73914 NE OO SU IL
 W forms%s		forms.adb		forms.ali
 W p_combinaisons%s	p_combinaisons.adb	p_combinaisons.ali
 W p_fenbase%s		p_fenbase.adb		p_fenbase.ali
 W p_vue_graph%s		p_vue_graph.adb		p_vue_graph.ali
 W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+W text_io%s		text_io.ads		text_io.ali
 
 D ada.ads		20070406091342 3ffc8e18 ada%s
 D a-except.ads		20151016123252 291912d5 ada.exceptions%s
@@ -29,7 +28,7 @@ D a-textio.ads		20140717063745 386df5d4 ada.text_io%s
 D a-tiinio.ads		20140717063513 aa04e5d6 ada.text_io.integer_io%s
 D a-unccon.ads		20070406091342 f9eb8f06 ada.unchecked_conversion%s
 D forms.ads		20131119093435 77062ffa forms%s
-D gaudigraph.adb	20190124095408 097efdf2 gaudigraph%b
+D gaudigraph.adb	20190124152949 37b8baec gaudigraph%b
 D interfac.ads		20151118101227 4be8ce1b interfaces%s
 D i-c.ads		20110801143639 5421119b interfaces.c%s
 D i-cpoint.ads		20130104124955 ee8a93ec interfaces.c.pointers%s
@@ -38,7 +37,7 @@ D i-cstrea.ads		20140801100435 e53d8b8e interfaces.c_streams%s
 D p_combinaisons.ads	20190124080153 5cc0b07f p_combinaisons%s
 D p_esiut.ads		20171021085208 79b955f7 p_esiut%s
 D p_fenbase.ads		20151211101611 0921f64d p_fenbase%s
-D p_vue_graph.ads	20190124095431 8e475753 p_vue_graph%s
+D p_vue_graph.ads	20190124152602 ff5eccf9 p_vue_graph%s
 D sequenio.ads		20080801103345 98e3343c sequential_io%s
 D stdarg.ads		20131119093435 7296442b stdarg%s
 D system.ads		20151123113124 6326c08a system%s
@@ -63,28 +62,45 @@ D x-xresource.ads	20131119093435 a4316b49 x.xresource%s
 D x-xutil.ads		20131119093435 c9532168 x.xutil%s
 X 10 forms.ads
 27K9*forms 6112e10 11|4w6 4r17
-344n9*FL_BLACK{343E10} 11|22r46
+50N5*FL_LARGE_SIZE 11|36r42
+344n9*FL_BLACK{343E10} 11|31r46
+529n9*FL_FIXEDBOLD_STYLE{522E10} 11|37r41
 X 11 gaudigraph.adb
-7U11*gaudigraph 7b11 30l5 30t15
-8r3 Facc{19|29R8} 14m18 14r18 16r18 17r23
-8r8 Fcrypt{19|29R8} 19m3 20m18 20r18 21m18 21r18 22m24 22r24 24m19 24r19
-. 27r14 28r18 29r23
-9a3 s{string} 17m3 29m3
+8U11*gaudigraph 8b11 48l5 48t15
+9r3 Facc{19|29R8} 22m18 22r18
+9r8 Fcrypt{19|29R8} 28m3 29m18 29r18 30m18 30r18 31m24 31r24 32m19 32r19
+. 33m19 33r19 34m19 34r19 35m18 35r18 36m24 36r24 37m23 37r23 38m19 38r19
+. 39r14 40r20 44m16 44r16 44r50 45m23 45r23
+11i3 num{integer} 43r22 44m24 44r24
+12i3 nbcb{integer} 43m38 44r29
+13a3 sol{string} 43m33 45r31
+14a3 V{17|27A14} 18m9 32r27 45r39
+15b3 continuer{boolean} 41m5 42r11 44m58
 X 17 p_combinaisons.ads
 5K9*p_combinaisons 11|1w6 1r26 17|65e19
+27A14*TV_Gaudi(11R14)<integer> 11|14r7
 X 19 p_fenbase.ads
 3K10*p_fenbase 11|3w6 3r21 19|195e14
-7R11*TR_Fenetre 11|8r17 19|34e13
+7R11*TR_Fenetre 11|9r17 19|34e13
 29R8*TR_Fenetre
-38U13*InitialiserFenetres 11|12s3
-40V12*DebutFenetre{29R8} 11|19s13
-64U13*AjouterTexte 11|20s5 21s5
-120U13*FinFenetre 11|27s3
-123U13*MontrerFenetre 11|16s3 28s3
-129V12*AttendreBouton{string} 11|17s8 29s8
-153U13*ChangerCouleurFond 11|22s5
+38U13*InitialiserFenetres 11|20s3
+40V12*DebutFenetre{29R8} 11|28s13
+46U13*AjouterBouton 11|33s5 34s5 38s5
+64U13*AjouterTexte 11|29s5 30s5 35s5
+120U13*FinFenetre 11|39s3
+123U13*MontrerFenetre 11|40s5
+129V12*AttendreBouton{string} 11|44s35
+153U13*ChangerCouleurFond 11|31s5
+158U13*ChangerStyleTexte 11|37s5
+163U13*ChangerTailleTexte 11|36s5
 X 20 p_vue_graph.ads
-7K9*p_vue_graph 11|2w6 2r23 20|18e16
-8U13*AfficheGrille 11|24s5
-10U13*FenetreAccueil 11|14s3
+8K9*p_vue_graph 11|2w6 2r23 20|25e16
+10U13*Gaudi 11|18s3
+13U13*AfficheGrille 11|32s5
+15U13*FenetreAccueil 11|22s3
+18U13*Solution 11|44s7
+20U13*AfficheSolution 11|45s7
+22U13*TrouveCombi 11|43s7
+X 37 text_io.ads
+24K9*Text_IO=24:29 11|5w6 5r19
 
