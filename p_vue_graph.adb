@@ -38,16 +38,19 @@ package body p_vue_graph is
   -- {} => {Creation de la fenetre du Cryptogramme}
   begin
     Fcrypt := DebutFenetre("Cryptogramme de Subirachs",800,700);
-      AjouterTexte(Fcrypt, "Titre","Cryptogramme de Subirachs", 200,20, 400, 30);
+      AjouterTexte(Fcrypt, "Titre","Cryptogramme de Subirachs", 220,20, 400, 50);
+      ChangerTailleTexte(Fcrypt, "Titre", FL_LARGE_SIZE);
       AjouterTexte(Fcrypt, "FondCrypto", "", 175, 70, 450, 450);
       ChangerCouleurFond(Fcrypt, "FondCrypto", FL_BLACK);
       AfficheGrille(Fcrypt, V);
       AjouterBouton(Fcrypt, "pred", "Precedant", 50,550, 200,100);
       AjouterBouton(Fcrypt, "succ", "Suivant", 550,550, 200,100);
       AjouterTexte(Fcrypt, "numsol", "1", 370,560, 60, 80);
+      AjouterTexte(Fcrypt, "legendnum", "Numero de la solution :", 325, 540, 150, 20);
+      AjouterTexte(Fcrypt, "msginfos", "Pour nbcases cases il y a n combinaisons", 300, 650, 300, 20);
       ChangerTailleTexte(Fcrypt, "numsol", FL_LARGE_SIZE);
       ChangerStyleTexte(Fcrypt, "numsol", FL_FIXEDBOLD_STYLE);
-      AjouterBouton(Fcrypt, "fin", "Quitter", 650,20,150,100);
+      AjouterBouton(Fcrypt, "fin", "Quitter", 650,20,100,50);
 
     FinFenetre(Fcrypt);
   end FenetreCryptogramme;
@@ -94,6 +97,7 @@ package body p_vue_graph is
     for l in 1..4 loop
       for c in 1..4 loop
         AjouterBouton(Fen, "Case"& V((l-1)*4+c).nom, Integer'image(V((l-1)*4+c).valeur), 185 + 110*(l-1), 80 + 110*(c-1), 100, 100);
+        ChangerTailleTexte(Fen, "Case"& V((l-1)*4+c).nom, FL_MEDIUM_SIZE);
       end loop;
     end loop;
   end AfficheGrille;
@@ -111,8 +115,6 @@ package body p_vue_graph is
     end if;
     get_line(f, val, lg);
 
-
-
     ------------avance jusqu'au nombre de cases correspondant-------------------
     while val(1) /= integer'image(nbcases)(2) and not end_of_file(f) loop
     --(integer'image(nbcases)&' ')
@@ -121,9 +123,10 @@ package body p_vue_graph is
     nbcb := integer'value(val(3..lg));
     for i in 1..num loop
       get_line(f,val,lg);
+
     end loop;
     sol(sol'first..sol'last) := (others => ' ');
-    sol(1..lg) := val(1..lg);
+    sol(sol'First..lg) := val(sol'First..lg);
     close(f);
   end TrouveCombi;
 
@@ -163,7 +166,6 @@ package body p_vue_graph is
       end loop;
     end loop;
     while i <= nbcases*2 loop
-      put(integer'image(i));
       ChangerCouleurFond(Fen, "Case"& sol(i..i+1), FL_DEEPPINK);
       i := i+2;
     end loop;

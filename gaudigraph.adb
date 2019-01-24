@@ -8,12 +8,11 @@ with p_esiut; use p_esiut;
 procedure gaudigraph is
   Facc,Fcrypt : TR_Fenetre;
   -- s : string(1..20);
-  num : integer := 1;
+  num : integer := 0;
   nbcb : integer;
   sol : string(1..15);
   V : TV_Gaudi(1..16);
   continuer : boolean;
-  s : string(1..20);
   nbcases : integer;
   Btcontigue, BtCommencer : boolean;
 begin -- gaudigraph
@@ -32,17 +31,19 @@ begin -- gaudigraph
   changercouleurfond(Facc, "BoutonToutes", FL_PALEGREEN);
   while not BtCommencer loop
     choixdesCase(Facc,attendreBouton(facc),nbcases, Btcontigue, BtCommencer);
-    ecrire_ligne(nbcases);
-    ecrire_ligne(Btcontigue);
-    ecrire_ligne(BtCommencer);
+    -- ecrire_ligne(nbcases);
+    -- ecrire_ligne(Btcontigue);
+    -- ecrire_ligne(BtCommencer);
   end loop;
   cacherfenetre(Facc);
   montrerfenetre(Fcrypt);
   continuer := true;
+  TrouveCombi(nbcases, num, Btcontigue, sol, nbcb);
+  ChangerTexte(Fcrypt, "msginfos", "Pour " & integer'image(nbcases) & " cases il y a " & integer'image(nbcb) & " combinaisons");
   while continuer loop
-    TrouveCombi(4, num, true, sol, nbcb);
+    TrouveCombi(nbcases, num, Btcontigue, sol, nbcb);
     Solution(Fcrypt, num, nbcb, attendreBouton(Fcrypt),continuer);
-    AfficheSolution(Fcrypt, sol, 4, V);
+    AfficheSolution(Fcrypt, sol, nbcases, V);
   end loop;
   cacherfenetre(Fcrypt);
 
