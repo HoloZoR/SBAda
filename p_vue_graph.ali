@@ -9,11 +9,11 @@ RV NO_DEFAULT_INITIALIZATION
 RV NO_DYNAMIC_SIZED_OBJECTS
 RV SPARK_05
 
-U p_vue_graph%b		p_vue_graph.adb		c99a541e NE OO PK IL
+U p_vue_graph%b		p_vue_graph.adb		ea3a698a NE OO PK IL
 W system.concat_2%s	s-conca2.adb		s-conca2.ali
 W system.img_int%s	s-imgint.adb		s-imgint.ali
 
-U p_vue_graph%s		p_vue_graph.ads		dbd62be2 EE NE OO PK IL
+U p_vue_graph%s		p_vue_graph.ads		98d18f75 EE NE OO PK IL
 W p_combinaisons%s	p_combinaisons.adb	p_combinaisons.ali
 W p_fenbase%s		p_fenbase.adb		p_fenbase.ali
 W sequential_io%s
@@ -36,8 +36,8 @@ D i-cstrea.ads		20140801100435 e53d8b8e interfaces.c_streams%s
 D p_combinaisons.ads	20190124072425 5cc0b07f p_combinaisons%s
 D p_esiut.ads		20171021085208 79b955f7 p_esiut%s
 D p_fenbase.ads		20151211101611 0921f64d p_fenbase%s
-D p_vue_graph.ads	20190124074903 16d459ec p_vue_graph%s
-D p_vue_graph.adb	20190124080022 df4e0df2 p_vue_graph%b
+D p_vue_graph.ads	20190124083640 55d3fd7b p_vue_graph%s
+D p_vue_graph.adb	20190124093804 bfe994f1 p_vue_graph%b
 D sequenio.ads		20080801103345 98e3343c sequential_io%s
 D stdarg.ads		20131119093435 7296442b stdarg%s
 D system.ads		20151123113124 6326c08a system%s
@@ -62,37 +62,44 @@ D x-xlib.ads		20131119093435 9333a883 x.xlib%s
 D x-xresource.ads	20131119093435 a4316b49 x.xresource%s
 D x-xutil.ads		20131119093435 c9532168 x.xutil%s
 X 4 a-sequio.ads
-53P9*File_Type<30|63P9> 20|15r20[16|20]
+53P9*File_Type<30|63P9> 20|34r20[16|20]
 55E9*File_Mode
-55n23*In_File{55E9[16|20]} 20|18r13[16|20]
-76U14*Open 20|18s5[16|20]
-82U14*Close 20|20s5[16|20]
+55n23*In_File{55E9[16|20]} 20|37r13[16|20]
+76U14*Open 20|37s5[16|20]
+82U14*Close 20|39s5[16|20]
 X 16 p_combinaisons.ads
 5K9*p_combinaisons 65e19 19|1w6 1r26 3r5
-12a17*nom{string} 20|23r49
-13i17*valeur{positive} 20|23r81
-20K17*p_cases_io[4|43] 19|3r20 20|15r9
-27A14*TV_Gaudi(11R14)<integer> 20|16r9
-31U19*CreeVectGaudi 20|19s5
+12a17*nom{string} 20|42r49
+13i17*valeur{positive} 20|42r81
+20K17*p_cases_io[4|43] 19|3r20 20|34r9
+27A14*TV_Gaudi(11R14)<integer> 20|35r9
+31U19*CreeVectGaudi 20|38s5
 X 18 p_fenbase.ads
 3K10*p_fenbase 195e14 19|4w6 4r21
-7R11*TR_Fenetre 34e13 19|7r41 9r42 20|3r42 14r41
+7R11*TR_Fenetre 34e13 19|7r41 9r42 20|4r42 33r41
+9E11*T_Couleur{10|443E13} 19|9r71 20|4r71
 29R8*TR_Fenetre
-40V12*DebutFenetre{29R8} 20|6s13
-46U13*AjouterBouton 20|10s7 23s9
-64U13*AjouterTexte 20|7s7 8s7
-120U13*FinFenetre 20|11s5
+40V12*DebutFenetre{29R8} 20|10s13
+46U13*AjouterBouton 20|14s7 16s7 18s7 20s7 22s7 24s7 25s7 28s7 42s9
+64U13*AjouterTexte 20|11s7 12s7
+120U13*FinFenetre 20|30s5
 X 19 p_vue_graph.ads
-6K9*p_vue_graph 11l5 11e16 20|1b14 30l5 30t16
-7U13*AfficheGrille 7=28 20|14b13 26l7 26t20
-7r28 Fen{18|29R8} 20|14b28 23m23
-9U13*FenetreAccueil 9=28 20|3b13 12l7 12t21
-9r28 Facc{18|29R8} 20|3b28 6m5 7m20 8m20 10m21 11r16
+6K9*p_vue_graph 11l5 11e16 20|2b14 49l5 49t16
+7U13*AfficheGrille 7=28 20|33b13 45l7 45t20
+7r28 Fen{18|29R8} 20|33b28 42m23
+9U13*FenetreAccueil 9=28 9>54 20|4b13 31l7 31t21
+9r28 Facc{18|29R8} 20|4b28 10m5 11m20 12m20 14m21 16m21 18m21 20m21 22m21
+. 24m21 25m21 28m21 30r16
+9e54 FondCouleur{18|9E11} 20|4b54
 X 20 p_vue_graph.adb
-15p5 f{4|53P9[16|20]} 18m10 18r10 19m19 19r19 20m11 20r11
-16a5 V{16|27A14} 19m22 23r36 23r68
-21i9 l{integer} 23r39 23r71 23r101
-22i11 c{integer} 23r46 23r78 23r117
+6i5 x{integer} 14r46 15m9 15r14 16r46 17m9 17r14 18r46 19m9 19r14 20r46 21m9
+. 21r14 22r46
+7i5 y{integer} 14r49 16r49 18r49 20r49 22r49
+8i5 C{integer} 14r52 14r55 16r52 16r55 18r52 18r55 20r52 20r55 22r52 22r55
+34p5 f{4|53P9[16|20]} 37m10 37r10 38m19 38r19 39m11 39r11
+35a5 V{16|27A14} 38m22 42r36 42r68
+40i9 l{integer} 42r39 42r71 42r101
+41i11 c{integer} 42r46 42r78 42r117
 X 21 sequenio.ads
 24k17*Sequential_IO 19|2w6
 X 30 s-sequio.ads

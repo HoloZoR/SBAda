@@ -7,12 +7,13 @@ with forms; use forms;
 procedure gaudigraph is
   Facc,Fcrypt : TR_Fenetre;
   s : string(1..20);
+  FondCouleur : T_couleur := FL_BLACK;
 begin -- gaudigraph
   -----------------Initialisation des fenêtres----------------------------------
   InitialiserFenetres;
   -- Fenêtre d'accueil
-  FenetreAccueil(Facc);
-  -- Fenêtre cryptogramme
+  FenetreAccueil(Facc, FondCouleur);
+  --Fenêtre cryptogramme
   montrerfenetre(facc);
   s := attendreBouton(facc);
   ------------------------------------------------------------------------------
