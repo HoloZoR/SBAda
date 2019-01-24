@@ -1,4 +1,4 @@
-
+with forms; use forms;
 package body p_vue_graph is
 
   procedure FenetreAccueil(Facc : in out TR_Fenetre) is
@@ -8,10 +8,14 @@ package body p_vue_graph is
     C : integer := 90; -- Pour bouton carré
   begin -- FenetreAccueil
     Facc := DebutFenetre("Accueil", 800,700); -- x y et L h
-      AjouterTexte(Facc, "TexteAccueil", "Bonjour et Bienvenue dans notre programme !", 250, 75, 400, 50);
-      AjouterTexte(Facc, "TexteCommencer", "Appuyer sur le bouton Commencer !", 270, 650, 400, 50);
-      --------------------------------------------------------------------------
-      AjouterTexte(Facc, "TexteInstuction", "Tout d'abord, Vous devez choisir un nombre de case. Ensuite, il vous faut choisir si vous voulez afficher toute les solutions", 270, 650, 320, 50);
+      AjouterTexte(Facc, "TexteAccueil", "Bienvenue dans le jeux du cryptogramme !", 155, 75, 500, 50);
+      ChangerTailleTexte(Facc, "TexteAccueil", FL_LARGE_SIZE);
+      --------------------------Message--------------------------------
+      AjouterTexte(Facc, "TexteInstuction", "Les instructions :", 220, 155, 320, 20);
+      AjouterTexte(Facc, "TexteInstuction1", "Tout d'abord, Vous devez choisir un nombre de case.", 220, 185, 335, 20);
+      AjouterTexte(Facc, "TexteInstuction2", "Ensuite, choisissez d'afficher toutes les solutions", 220, 215, 335, 20);
+      AjouterTexte(Facc, "TexteInstuction3", "ou seulement celles etant contigues.", 220, 245, 320, 21);
+      AjouterTexte(Facc, "TexteCommencer", "Appuyer sur le bouton Commencer !", 275, 650, 400, 50);
       --------------------Bouton choix nb cases---------------------------------
       AjouterBouton(Facc,"Bouton3","3 cases",x, y, C, C);
         x := x + 100;
@@ -22,16 +26,53 @@ package body p_vue_graph is
       AjouterBouton(Facc,"Bouton6","6 cases",x, y, C, C);
         x := x + 100;
       AjouterBouton(Facc,"Bouton7","7 cases",x, y, C, C);
-      --------------------Ajout de Check box------------------------------------
+      --------------------Bouton Choix des solutions----------------------------
       AjouterBouton(Facc,"BoutonToutes"," Toutes",285, 500, 100, 50);
       AjouterBouton(Facc,"BoutonContigue"," Contigues",400, 500, 100, 50);
 
       -------------------- Bouton pour commmencer-------------------------------
       AjouterBouton(Facc,"BoutonCommencer","Commencer",340, 600, 100, 50);
-
     FinFenetre(Facc);
   end FenetreAccueil;
+  procedure FenetreCryptogramme(Fcrypt : in out TR_Fenetre; V : in TV_Gaudi) is
+  -- {} => {Creation de la fenetre du Cryptogramme}
+  begin
+    Fcrypt := DebutFenetre("Cryptogramme de Subirachs",800,700);
+      AjouterTexte(Fcrypt, "Titre","Cryptogramme de Subirachs", 200,20, 400, 30);
+      AjouterTexte(Fcrypt, "FondCrypto", "", 175, 70, 450, 450);
+      ChangerCouleurFond(Fcrypt, "FondCrypto", FL_BLACK);
+      AfficheGrille(Fcrypt, V);
+      AjouterBouton(Fcrypt, "pred", "Precedant", 50,550, 200,100);
+      AjouterBouton(Fcrypt, "succ", "Suivant", 550,550, 200,100);
+      AjouterTexte(Fcrypt, "numsol", "1", 370,560, 60, 80);
+      ChangerTailleTexte(Fcrypt, "numsol", FL_LARGE_SIZE);
+      ChangerStyleTexte(Fcrypt, "numsol", FL_FIXEDBOLD_STYLE);
+      AjouterBouton(Fcrypt, "fin", "Quitter", 650,20,150,100);
 
+    FinFenetre(Fcrypt);
+  end FenetreCryptogramme;
+  ------------------------------------------------------------------------------
+  procedure choixdesCase(Facc : in out TR_Fenetre; attClick : in string; nbcases : in out integer; Btc : in out boolean; BtCommencer : in out boolean) is
+  begin
+    if (attClick(attClick'first..(attClick'last - 1)) = "Bouton") then
+      for i in 3..7 loop
+        changercouleurfond(Facc, "Bouton" & integer'image(i)(2), FL_COL1);
+      end loop;
+      changercouleurfond(Facc, attClick, FL_PALEGREEN);
+      nbcases := integer'value('0'&attClick(attClick'Last));
+    elsif attClick = "BoutonToutes" then
+      changercouleurfond(Facc, "BoutonContigue", FL_COL1);
+      changercouleurfond(Facc, attClick, FL_PALEGREEN);
+      Btc := False;
+    elsif attClick = "BoutonContigue" then
+      changercouleurfond(Facc, "BoutonToutes", FL_COL1);
+      changercouleurfond(Facc, attClick, FL_PALEGREEN);
+      Btc := True;
+    elsif attClick = "BoutonCommencer" then
+      BtCommencer := true;
+    end if;
+  end choixdesCase;
+  ------------------------------------------------------------------------------
   procedure Gaudi (V : out TV_Gaudi) is
   --{} => {creation vecteur TV_Gaudi et fichiers fsol et fcont}
     f : p_cases_IO.file_type;

@@ -10,9 +10,10 @@ RV NO_SECONDARY_STACK
 RV NO_DEFAULT_INITIALIZATION
 RV SPARK_05
 
-U gaudigraph%b		gaudigraph.adb		afd73914 NE OO SU IL
+U gaudigraph%b		gaudigraph.adb		95acee8e NE OO SU IL
 W forms%s		forms.adb		forms.ali
 W p_combinaisons%s	p_combinaisons.adb	p_combinaisons.ali
+W p_esiut%s		p_esiut.adb		p_esiut.ali
 W p_fenbase%s		p_fenbase.adb		p_fenbase.ali
 W p_vue_graph%s		p_vue_graph.adb		p_vue_graph.ali
 W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
@@ -28,7 +29,7 @@ D a-textio.ads		20140717063745 386df5d4 ada.text_io%s
 D a-tiinio.ads		20140717063513 aa04e5d6 ada.text_io.integer_io%s
 D a-unccon.ads		20070406091342 f9eb8f06 ada.unchecked_conversion%s
 D forms.ads		20131119093435 77062ffa forms%s
-D gaudigraph.adb	20190124152949 37b8baec gaudigraph%b
+D gaudigraph.adb	20190124160810 cd2266a4 gaudigraph%b
 D interfac.ads		20151118101227 4be8ce1b interfaces%s
 D i-c.ads		20110801143639 5421119b interfaces.c%s
 D i-cpoint.ads		20130104124955 ee8a93ec interfaces.c.pointers%s
@@ -37,7 +38,7 @@ D i-cstrea.ads		20140801100435 e53d8b8e interfaces.c_streams%s
 D p_combinaisons.ads	20190124080153 5cc0b07f p_combinaisons%s
 D p_esiut.ads		20171021085208 79b955f7 p_esiut%s
 D p_fenbase.ads		20151211101611 0921f64d p_fenbase%s
-D p_vue_graph.ads	20190124152602 ff5eccf9 p_vue_graph%s
+D p_vue_graph.ads	20190124155901 460692dc p_vue_graph%s
 D sequenio.ads		20080801103345 98e3343c sequential_io%s
 D stdarg.ads		20131119093435 7296442b stdarg%s
 D system.ads		20151123113124 6326c08a system%s
@@ -62,45 +63,46 @@ D x-xresource.ads	20131119093435 a4316b49 x.xresource%s
 D x-xutil.ads		20131119093435 c9532168 x.xutil%s
 X 10 forms.ads
 27K9*forms 6112e10 11|4w6 4r17
-50N5*FL_LARGE_SIZE 11|36r42
-344n9*FL_BLACK{343E10} 11|31r46
-529n9*FL_FIXEDBOLD_STYLE{522E10} 11|37r41
+362n9*FL_PALEGREEN{343E10} 11|31r39 32r44
 X 11 gaudigraph.adb
-8U11*gaudigraph 8b11 48l5 48t15
-9r3 Facc{19|29R8} 22m18 22r18
-9r8 Fcrypt{19|29R8} 28m3 29m18 29r18 30m18 30r18 31m24 31r24 32m19 32r19
-. 33m19 33r19 34m19 34r19 35m18 35r18 36m24 36r24 37m23 37r23 38m19 38r19
-. 39r14 40r20 44m16 44r16 44r50 45m23 45r23
-11i3 num{integer} 43r22 44m24 44r24
-12i3 nbcb{integer} 43m38 44r29
-13a3 sol{string} 43m33 45r31
-14a3 V{17|27A14} 18m9 32r27 45r39
-15b3 continuer{boolean} 41m5 42r11 44m58
+8U11*gaudigraph 8b11 49l5 49t15
+9r3 Facc{19|29R8} 25m18 25r18 29r18 31m22 31r22 32m22 32r22 34m18 34r18 34r38
+. 39r17
+9r8 Fcrypt{19|29R8} 27m23 27r23 40r18 44m14 44r14 44r48 45m21 45r21 47r17
+11i3 num{integer} 43r20 44m22 44r22
+12i3 nbcb{integer} 43m36 44r27
+13a3 sol{string} 43m31 45r29
+14a3 V{17|27A14} 21m9 27r31 45r37
+15b3 continuer{boolean} 41m3 42r9 44m56
+16a3 s{string}
+17i3 nbcases{integer} 30m3 34m44 34r44 35r18
+18b3 Btcontigue{boolean} 30m17 34m53 34r53 36r18
+18b15 BtCommencer{boolean} 30m38 33r13 34m65 34r65 37r18
 X 17 p_combinaisons.ads
 5K9*p_combinaisons 11|1w6 1r26 17|65e19
 27A14*TV_Gaudi(11R14)<integer> 11|14r7
+X 18 p_esiut.ads
+15K11*p_esiut 11|6w6 6r19 18|176e14
+24U16*ECRIRE_LIGNE 11|35s5
+98U16*ECRIRE_LIGNE 11|36s5 37s5
 X 19 p_fenbase.ads
 3K10*p_fenbase 11|3w6 3r21 19|195e14
 7R11*TR_Fenetre 11|9r17 19|34e13
 29R8*TR_Fenetre
-38U13*InitialiserFenetres 11|20s3
-40V12*DebutFenetre{29R8} 11|28s13
-46U13*AjouterBouton 11|33s5 34s5 38s5
-64U13*AjouterTexte 11|29s5 30s5 35s5
-120U13*FinFenetre 11|39s3
-123U13*MontrerFenetre 11|40s5
-129V12*AttendreBouton{string} 11|44s35
-153U13*ChangerCouleurFond 11|31s5
-158U13*ChangerStyleTexte 11|37s5
-163U13*ChangerTailleTexte 11|36s5
+38U13*InitialiserFenetres 11|23s3
+123U13*MontrerFenetre 11|29s3 40s3
+126U13*CacherFenetre 11|39s3 47s3
+129V12*AttendreBouton{string} 11|34s23 44s33
+153U13*ChangerCouleurFond 11|31s3 32s3
 X 20 p_vue_graph.ads
-8K9*p_vue_graph 11|2w6 2r23 20|25e16
-10U13*Gaudi 11|18s3
-13U13*AfficheGrille 11|32s5
-15U13*FenetreAccueil 11|22s3
-18U13*Solution 11|44s7
-20U13*AfficheSolution 11|45s7
-22U13*TrouveCombi 11|43s7
+8K9*p_vue_graph 11|2w6 2r23 20|33e16
+10U13*Gaudi 11|21s3
+15U13*FenetreAccueil 11|25s3
+18U13*FenetreCryptogramme 11|27s3
+21U13*choixdesCase 11|34s5
+24U13*Solution 11|44s5
+26U13*AfficheSolution 11|45s5
+28U13*TrouveCombi 11|43s5
 X 37 text_io.ads
 24K9*Text_IO=24:29 11|5w6 5r19
 

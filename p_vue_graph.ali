@@ -10,13 +10,14 @@ RV NO_DEFAULT_INITIALIZATION
 RV NO_DYNAMIC_SIZED_OBJECTS
 RV SPARK_05
 
-U p_vue_graph%b		p_vue_graph.adb		f17953bc NE OO PK IL
+U p_vue_graph%b		p_vue_graph.adb		59f6a858 NE OO PK IL
 W ada.tags%s		a-tags.adb		a-tags.ali
+W forms%s		forms.adb		forms.ali
 W system.concat_2%s	s-conca2.adb		s-conca2.ali
 W system.img_int%s	s-imgint.adb		s-imgint.ali
 W system.val_int%s	s-valint.adb		s-valint.ali
 
-U p_vue_graph%s		p_vue_graph.ads		008cb7c4 EE NE OO PK IL
+U p_vue_graph%s		p_vue_graph.ads		b9d4e9e1 EE NE OO PK IL
 W forms%s		forms.adb		forms.ali
 W p_combinaisons%s	p_combinaisons.adb	p_combinaisons.ali
 W p_fenbase%s		p_fenbase.adb		p_fenbase.ali
@@ -41,8 +42,8 @@ D i-cstrea.ads		20140801100435 e53d8b8e interfaces.c_streams%s
 D p_combinaisons.ads	20190124080153 5cc0b07f p_combinaisons%s
 D p_esiut.ads		20171021085208 79b955f7 p_esiut%s
 D p_fenbase.ads		20151211101611 0921f64d p_fenbase%s
-D p_vue_graph.ads	20190124152602 ff5eccf9 p_vue_graph%s
-D p_vue_graph.adb	20190124152900 0e279f45 p_vue_graph%b
+D p_vue_graph.ads	20190124155901 460692dc p_vue_graph%s
+D p_vue_graph.adb	20190124160901 68f6157e p_vue_graph%b
 D sequenio.ads		20080801103345 98e3343c sequential_io%s
 D stdarg.ads		20131119093435 7296442b stdarg%s
 D system.ads		20151123113124 6326c08a system%s
@@ -68,93 +69,115 @@ D x-xlib.ads		20131119093435 9333a883 x.xlib%s
 D x-xresource.ads	20131119093435 a4316b49 x.xresource%s
 D x-xutil.ads		20131119093435 c9532168 x.xutil%s
 X 4 a-sequio.ads
-53P9*File_Type<30|63P9> 20|37r20[16|20]
+53P9*File_Type<30|63P9> 20|78r20[16|20]
 55E9*File_Mode
-55n23*In_File{55E9[16|20]} 20|40r13[16|20]
-76U14*Open 20|40s5[16|20]
-82U14*Close 20|42s5[16|20]
+55n23*In_File{55E9[16|20]} 20|81r13[16|20]
+76U14*Open 20|81s5[16|20]
+82U14*Close 20|83s5[16|20]
 X 7 a-textio.ads
-52P9*File_Type 20|38r27 62r17
-53n23*In_File{53E9} 20|67r15 69r15
-53n32*Out_File{53E9} 20|43r18 45r19
-86U14*Create 20|43s5 45s5
-92U14*Open 20|67s7 69s7
-98U14*Close 20|47s5 48s5 86s5
-183V13*End_Of_File{boolean} 20|76s55
-242U14*Put 20|125s7
-244U14*Get_Line 20|71s5 78s7 82s7
+52P9*File_Type 20|79r27 103r17
+53n23*In_File{53E9} 20|108r15 110r15
+53n32*Out_File{53E9} 20|84r18 86r19
+86U14*Create 20|84s5 86s5
+92U14*Open 20|108s7 110s7
+98U14*Close 20|88s5 89s5 127s5
+183V13*End_Of_File{boolean} 20|117s55
+242U14*Put 20|166s7
+244U14*Get_Line 20|112s5 119s7 123s7
 X 10 forms.ads
-27K9*forms 6112e10 19|5w6 5r17
-355n9*FL_COL1{343E10} 20|121r59
-369n9*FL_DEEPPINK{343E10} 20|126r52
+27K9*forms 6112e10 19|5w6 5r17 20|1w6 1r17
+50N5*FL_LARGE_SIZE 20|12r48 48r44
+344n9*FL_BLACK{343E10} 20|43r48
+355n9*FL_COL1{343E10} 20|59r66 64r50 68r48 162r59
+362n9*FL_PALEGREEN{343E10} 20|61r42 65r42 69r42
+369n9*FL_DEEPPINK{343E10} 20|167r52
+529n9*FL_FIXEDBOLD_STYLE{522E10} 20|49r43
 X 16 p_combinaisons.ads
 5K9*p_combinaisons 65e19 19|1w6 1r26 3r5
-12a17*nom{string} 20|55r49 121r54
-13i17*valeur{positive} 20|55r81
-20K17*p_cases_io[4|43] 19|3r20 20|37r9
-27A14*TV_Gaudi(11R14)<integer> 19|10r28 13r60 20r101 20|35r28 51r60 116r101
-31U19*CreeVectGaudi 20|41s5
-37U19*CreeFicsol 20|44s5
-62U19*CreeFicsolcont 20|46s5
+12a17*nom{string} 20|96r49 162r54
+13i17*valeur{positive} 20|96r81
+20K17*p_cases_io[4|43] 19|3r20 20|78r9
+27A14*TV_Gaudi(11R14)<integer> 19|10r28 13r60 18r68 26r101 20|37r68 76r28
+. 92r60 157r101
+31U19*CreeVectGaudi 20|82s5
+37U19*CreeFicsol 20|85s5
+62U19*CreeFicsolcont 20|87s5
 X 18 p_fenbase.ads
 3K10*p_fenbase 195e14 19|4w6 4r21
-7R11*TR_Fenetre 34e13 19|13r41 15r42 18r35 20r43 20|4r42 51r41 89r35 116r43
+7R11*TR_Fenetre 34e13 19|13r41 15r42 18r49 21r40 24r35 26r43 20|4r42 37r49
+. 55r40 92r41 130r35 157r43
 29R8*TR_Fenetre
-40V12*DebutFenetre{29R8} 20|10s13
-46U13*AjouterBouton 20|16s7 18s7 20s7 22s7 24s7 26s7 27s7 30s7 55s9
-64U13*AjouterTexte 20|11s7 12s7 14s7
-120U13*FinFenetre 20|32s5
-138U13*ChangerTexte 20|109s7
-153U13*ChangerCouleurFond 20|121s9 126s7
+40V12*DebutFenetre{29R8} 20|10s13 40s15
+46U13*AjouterBouton 20|20s7 22s7 24s7 26s7 28s7 30s7 31s7 34s7 45s7 46s7
+. 50s7 96s9
+64U13*AjouterTexte 20|11s7 14s7 15s7 16s7 17s7 18s7 41s7 42s7 47s7
+120U13*FinFenetre 20|35s5 52s5
+138U13*ChangerTexte 20|150s7
+153U13*ChangerCouleurFond 20|43s7 59s9 61s7 64s7 65s7 68s7 69s7 162s9 167s7
+158U13*ChangerStyleTexte 20|49s7
+163U13*ChangerTailleTexte 20|12s7 48s7
 X 19 p_vue_graph.ads
-8K9*p_vue_graph 25l5 25e16 20|2b14 132l5 132t16
-10U13*Gaudi 10<20 20|35b13 49l7 49t12
-10a20 V{16|27A14} 20|35b20 41m22 44r16
-13U13*AfficheGrille 13=28 13>53 20|51b13 58l7 58t20
-13r28 Fen{18|29R8} 20|51b28 55m23
-13a53 V{16|27A14} 20|51b53 55r36 55r68
-15U13*FenetreAccueil 15=28 20|4b13 33l7 33t21
-15r28 Facc{18|29R8} 20|4b28 10m5 11m20 12m20 14m20 16m21 18m21 20m21 22m21
-. 24m21 26m21 27m21 30m21 32r16
-18U13*Solution 18=22 18=47 18>69 18>87 18<102 20|89b13 113l7 113t15
-18r22 Fen{18|29R8} 20|89b22 109m20
-18i47 num{integer} 20|89b47 94r12 95m11 97m11 97r18 100r12 101m11 103m11
-. 103r18 109r49
-18i69 nbcb{integer} 20|89b69 95r18 100r18
-18a87 s{string} 20|89b88 93r10 99r13 105r13
-18b102 continuer{boolean} 20|89b103 92m5 106m9
-20U13*AfficheSolution 20=30 20>55 20>72 20>94 20|116b13 130l7 130t22
-20r30 Fen{18|29R8} 20|116b30 121m28 126m26
-20a55 sol{string} 20|116b55 117r20 126r39
-20i72 nbcases{integer} 20|116b72 124r16
-20a94 V{16|27A14} 20|116b94 121r41
-22U13*TrouveCombi 22>25 22>47 22>65 22<88 22<106 20|60b13 87l7 87t18
-22i25 nbcases{integer} 20|60b25 76r35
-22i47 num{integer} 20|60b47 81r17
-22b65 contigue{boolean} 20|60b65 66r8
-22a88 sol{string} 20|60b88 84m5 84r9 84r20 85m5
-22i106 nbcb{integer} 20|60b106 80m5
+8K9*p_vue_graph 33l5 33e16 20|2b14 173l5 173t16
+10U13*Gaudi 10<20 20|76b13 90l7 90t12
+10a20 V{16|27A14} 20|76b20 82m22 85r16
+13U13*AfficheGrille 13=28 13>53 20|44s7 92b13 99l7 99t20
+13r28 Fen{18|29R8} 20|92b28 96m23
+13a53 V{16|27A14} 20|92b53 96r36 96r68
+15U13*FenetreAccueil 15=28 20|4b13 36l7 36t21
+15r28 Facc{18|29R8} 20|4b28 10m5 11m20 12m26 14m20 15m20 16m20 17m20 18m20
+. 20m21 22m21 24m21 26m21 28m21 30m21 31m21 34m21 35r16
+18U13*FenetreCryptogramme 18=33 18>61 20|37b13 53l7 53t26
+18r33 Fcrypt{18|29R8} 20|37b33 40m5 41m20 42m20 43m26 44m21 45m21 46m21 47m20
+. 48m26 49m25 50m21 52r16
+18a61 V{16|27A14} 20|37b61 44r29
+21U13*choixdesCase 21=26 21>52 21=74 21=100 21=122 20|55b13 74l7 74t19
+21r26 Facc{18|29R8} 20|55b26 59m28 61m26 64m26 65m26 68m26 69m26
+21a52 attClick{string} 20|55b52 57r9 57r18 57r35 61r32 62r36 62r45 63r11
+. 65r32 67r11 69r32 71r11
+21i74 nbcases{integer} 20|55b74 62m7
+21b100 Btc{boolean} 20|55b100 66m7 70m7
+21b122 BtCommencer{boolean} 20|55b122 72m7
+24U13*Solution 24=22 24=47 24>69 24>87 24<102 20|130b13 154l7 154t15
+24r22 Fen{18|29R8} 20|130b22 150m20
+24i47 num{integer} 20|130b47 135r12 136m11 138m11 138r18 141r12 142m11 144m11
+. 144r18 150r49
+24i69 nbcb{integer} 20|130b69 136r18 141r18
+24a87 s{string} 20|130b88 134r10 140r13 146r13
+24b102 continuer{boolean} 20|130b103 133m5 147m9
+26U13*AfficheSolution 26=30 26>55 26>72 26>94 20|157b13 171l7 171t22
+26r30 Fen{18|29R8} 20|157b30 162m28 167m26
+26a55 sol{string} 20|157b55 158r20 167r39
+26i72 nbcases{integer} 20|157b72 165r16
+26a94 V{16|27A14} 20|157b94 162r41
+28U13*TrouveCombi 28>25 28>47 28>65 28<88 28<106 20|101b13 128l7 128t18
+28i25 nbcases{integer} 20|101b25 117r35
+28i47 num{integer} 20|101b47 122r17
+28b65 contigue{boolean} 20|101b65 107r8
+28a88 sol{string} 20|101b88 125m5 125r9 125r20 126m5
+28i106 nbcb{integer} 20|101b106 121m5
 X 20 p_vue_graph.adb
-6i5 x{integer} 16r46 17m9 17r14 18r46 19m9 19r14 20r46 21m9 21r14 22r46 23m9
-. 23r14 24r46
-7i5 y{integer} 16r49 18r49 20r49 22r49 24r49
-8i5 C{integer} 16r52 16r55 18r52 18r55 20r52 20r55 22r52 22r55 24r52 24r55
-37p5 f{4|53P9[16|20]} 40m10 40r10 41m19 41r19 42m11 42r11
-38p5 fsol{7|52P9} 43m12 43r12 44m18 44r18 46m20 46r20 47m11 47r11
-38p11 fcont{7|52P9} 45m12 45r12 46m26 46r26 48m11 48r11
-53i9 l{integer} 55r39 55r71 55r101
-54i11 c{integer} 55r46 55r78 55r117
-62p5 f{7|52P9} 67m12 67r12 69m12 69r12 71r14 76r67 78r16 82r16 86m11 86r11
-63a5 val{string} 71m17 76r11 78m19 80r27 82m18 85r19
-64i5 lg{integer} 71m22 78m24 80r34 82m22 85r12 85r26
-81i9 i{integer}
-117i5 i{integer} 124r11 125r25 126r43 126r46 127m7 127r12
-119i9 l{integer} 121r44
-120i11 c{integer} 121r51
+6i5 x{integer} 20r46 21m9 21r14 22r46 23m9 23r14 24r46 25m9 25r14 26r46 27m9
+. 27r14 28r46
+7i5 y{integer} 20r49 22r49 24r49 26r49 28r49
+8i5 C{integer} 20r52 20r55 22r52 22r55 24r52 24r55 26r52 26r55 28r52 28r55
+58i11 i{integer} 59r59
+78p5 f{4|53P9[16|20]} 81m10 81r10 82m19 82r19 83m11 83r11
+79p5 fsol{7|52P9} 84m12 84r12 85m18 85r18 87m20 87r20 88m11 88r11
+79p11 fcont{7|52P9} 86m12 86r12 87m26 87r26 89m11 89r11
+94i9 l{integer} 96r39 96r71 96r101
+95i11 c{integer} 96r46 96r78 96r117
+103p5 f{7|52P9} 108m12 108r12 110m12 110r12 112r14 117r67 119r16 123r16 127m11
+. 127r11
+104a5 val{string} 112m17 117r11 119m19 121r27 123m18 126r19
+105i5 lg{integer} 112m22 119m24 121r34 123m22 126r12 126r26
+122i9 i{integer}
+158i5 i{integer} 165r11 166r25 167r43 167r46 168m7 168r12
+160i9 l{integer} 162r44
+161i11 c{integer} 162r51
 X 21 sequenio.ads
 24k17*Sequential_IO 19|2w6
 X 30 s-sequio.ads
 63P9*File_Type(43R9)
 X 39 text_io.ads
-24K9*Text_IO=24:29 19|6w6 6r19 20|38r19 62r9
+24K9*Text_IO=24:29 19|6w6 6r19 20|79r19 103r9
 

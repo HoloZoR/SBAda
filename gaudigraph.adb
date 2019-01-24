@@ -3,7 +3,7 @@ with p_vue_graph; use p_vue_graph;
 with p_fenbase; use p_fenbase;
 with forms; use forms;
 with text_io; use text_io;
-
+with p_esiut; use p_esiut;
 
 procedure gaudigraph is
   Facc,Fcrypt : TR_Fenetre;
@@ -13,6 +13,9 @@ procedure gaudigraph is
   sol : string(1..15);
   V : TV_Gaudi(1..16);
   continuer : boolean;
+  s : string(1..20);
+  nbcases : integer;
+  Btcontigue, BtCommencer : boolean;
 begin -- gaudigraph
 
   Gaudi(V);
@@ -21,28 +24,26 @@ begin -- gaudigraph
   -- Fenêtre d'accueil
   FenetreAccueil(Facc);
   --Fenêtre cryptogramme
-  -- montrerfenetre(facc);
-  -- s := attendreBouton(facc);
-
+  FenetreCryptogramme(Fcrypt, V);
   ------------------------------------------------------------------------------
-  Fcrypt := DebutFenetre("Cryptogramme de Subirachs",800,700);
-    AjouterTexte(Fcrypt, "Titre","Cryptogramme de Subirachs", 200,20, 400, 30);
-    AjouterTexte(Fcrypt, "FondCrypto", "", 175, 70, 450, 450);
-    ChangerCouleurFond(Fcrypt, "FondCrypto", FL_BLACK);
-    AfficheGrille(Fcrypt, V);
-    AjouterBouton(Fcrypt, "pred", "Precedant", 50,550, 200,100);
-    AjouterBouton(Fcrypt, "succ", "Suivant", 550,550, 200,100);
-    AjouterTexte(Fcrypt, "numsol", "1", 370,560, 60, 80);
-    ChangerTailleTexte(Fcrypt, "numsol", FL_LARGE_SIZE);
-    ChangerStyleTexte(Fcrypt, "numsol", FL_FIXEDBOLD_STYLE);
-    AjouterBouton(Fcrypt, "fin", "Retour a l'accueil", 20,20,150,100);
-  FinFenetre(Fcrypt);
-    montrerfenetre(Fcrypt);
-    continuer := true;
-    while continuer loop
-      TrouveCombi(4, num, true, sol, nbcb);
-      Solution(Fcrypt, num, nbcb, attendreBouton(Fcrypt),continuer);
-      AfficheSolution(Fcrypt, sol, 4, V);
-    end loop;
+  montrerfenetre(facc);
+  nbcases := 3; Btcontigue := false; BtCommencer := False;
+  changercouleurfond(Facc, "Bouton3", FL_PALEGREEN);
+  changercouleurfond(Facc, "BoutonToutes", FL_PALEGREEN);
+  while not BtCommencer loop
+    choixdesCase(Facc,attendreBouton(facc),nbcases, Btcontigue, BtCommencer);
+    ecrire_ligne(nbcases);
+    ecrire_ligne(Btcontigue);
+    ecrire_ligne(BtCommencer);
+  end loop;
+  cacherfenetre(Facc);
+  montrerfenetre(Fcrypt);
+  continuer := true;
+  while continuer loop
+    TrouveCombi(4, num, true, sol, nbcb);
+    Solution(Fcrypt, num, nbcb, attendreBouton(Fcrypt),continuer);
+    AfficheSolution(Fcrypt, sol, 4, V);
+  end loop;
+  cacherfenetre(Fcrypt);
 
 end gaudigraph;
