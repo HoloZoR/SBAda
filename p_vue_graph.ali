@@ -1,19 +1,22 @@
 V "GNAT Lib v6"
 A -gnatv
 A -gnato
-P ZX
+P SS ZX
 
 RN
 RV NO_IO
+RV NO_SECONDARY_STACK
 RV NO_DEFAULT_INITIALIZATION
 RV NO_DYNAMIC_SIZED_OBJECTS
 RV SPARK_05
 
-U p_vue_graph%b		p_vue_graph.adb		16893025 NE OO PK IL
+U p_vue_graph%b		p_vue_graph.adb		ae6597a3 NE OO PK IL
 W system.concat_2%s	s-conca2.adb		s-conca2.ali
 W system.img_int%s	s-imgint.adb		s-imgint.ali
+W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
 
-U p_vue_graph%s		p_vue_graph.ads		c80afaee EE NE OO PK IL
+U p_vue_graph%s		p_vue_graph.ads		34430aa7 EE NE OO PK IL
+W forms%s		forms.adb		forms.ali
 W p_combinaisons%s	p_combinaisons.adb	p_combinaisons.ali
 W p_fenbase%s		p_fenbase.adb		p_fenbase.ali
 W sequential_io%s
@@ -36,8 +39,8 @@ D i-cstrea.ads		20140801100435 e53d8b8e interfaces.c_streams%s
 D p_combinaisons.ads	20190124080153 5cc0b07f p_combinaisons%s
 D p_esiut.ads		20171021085208 79b955f7 p_esiut%s
 D p_fenbase.ads		20151211101611 0921f64d p_fenbase%s
-D p_vue_graph.ads	20190124080153 050888e0 p_vue_graph%s
-D p_vue_graph.adb	20190124080153 1381b8c5 p_vue_graph%b
+D p_vue_graph.ads	20190124093052 8e475753 p_vue_graph%s
+D p_vue_graph.adb	20190124093232 2022c0f0 p_vue_graph%b
 D sequenio.ads		20080801103345 98e3343c sequential_io%s
 D stdarg.ads		20131119093435 7296442b stdarg%s
 D system.ads		20151123113124 6326c08a system%s
@@ -47,6 +50,7 @@ D s-exctab.ads		20140225151139 54135002 system.exception_table%s
 D s-ficobl.ads		20140718105747 078245e4 system.file_control_block%s
 D s-imgint.ads		20090409150019 02dbe0c2 system.img_int%s
 D s-parame.ads		20140801093848 7e2a0d7f system.parameters%s
+D s-secsta.ads		20140225151139 86a2856d system.secondary_stack%s
 D s-sequio.ads		20090409150019 fc7560a7 system.sequential_io%s
 D s-soflin.ads		20151020124036 14e1eb6c system.soft_links%s
 D s-stache.ads		20140225151139 a37c21ec system.stack_checking%s
@@ -62,34 +66,54 @@ D x-xlib.ads		20131119093435 9333a883 x.xlib%s
 D x-xresource.ads	20131119093435 a4316b49 x.xresource%s
 D x-xutil.ads		20131119093435 c9532168 x.xutil%s
 X 4 a-sequio.ads
-53P9*File_Type<30|63P9> 20|4r20[16|20]
+53P9*File_Type<31|63P9> 20|15r20[16|20]
 55E9*File_Mode
-55n23*In_File{55E9[16|20]} 20|7r13[16|20]
-76U14*Open 20|7s5[16|20]
-82U14*Close 20|9s5[16|20]
+55n23*In_File{55E9[16|20]} 20|18r13[16|20]
+76U14*Open 20|18s5[16|20]
+82U14*Close 20|20s5[16|20]
+X 10 forms.ads
+27K9*forms 6112e10 19|5w6 5r17
+369n9*FL_DEEPPINK{343E10} 20|60r52
 X 16 p_combinaisons.ads
 5K9*p_combinaisons 65e19 19|1w6 1r26 3r5
-12a17*nom{string} 20|12r49
-13i17*valeur{positive} 20|12r81
-20K17*p_cases_io[4|43] 19|3r20 20|4r9
-27A14*TV_Gaudi(11R14)<integer> 20|5r9
-31U19*CreeVectGaudi 20|8s5
+12a17*nom{string} 20|23r49
+13i17*valeur{positive} 20|23r81
+20K17*p_cases_io[4|43] 19|3r20 20|15r9
+27A14*TV_Gaudi(11R14)<integer> 20|16r9
+31U19*CreeVectGaudi 20|19s5
 X 18 p_fenbase.ads
 3K10*p_fenbase 195e14 19|4w6 4r21
-7R11*TR_Fenetre 34e13 19|7r41 20|3r41
+7R11*TR_Fenetre 34e13 19|8r41 10r42 13r35 15r43 20|3r42 14r41 29r35 56r43
 29R8*TR_Fenetre
-46U13*AjouterBouton 20|12s9
+40V12*DebutFenetre{29R8} 20|6s13
+46U13*AjouterBouton 20|10s7 23s9 31s5 32s5
+64U13*AjouterTexte 20|7s7 8s7 34s5
+120U13*FinFenetre 20|11s5
+129V12*AttendreBouton{string} 20|36s10 42s13
+138U13*ChangerTexte 20|48s9
+153U13*ChangerCouleurFond 20|60s7
 X 19 p_vue_graph.ads
-6K9*p_vue_graph 9l5 9e16 20|1b14 17l5 17t16
-7U13*AfficheGrille 7=28 20|3b13 15l7 15t20
-7r28 Fen{18|29R8} 20|3b28 12m23
+7K9*p_vue_graph 18l5 18e16 20|1b14 66l5 66t16
+8U13*AfficheGrille 8=28 20|14b13 26l7 26t20
+8r28 Fen{18|29R8} 20|14b28 23m23
+10U13*FenetreAccueil 10=28 20|3b13 12l7 12t21
+10r28 Facc{18|29R8} 20|3b28 6m5 7m20 8m20 10m21 11r16
+13U13*Solution 13=22 13<47 13>66 20|29b13 54l7 54t15
+13r22 Fen{18|29R8} 20|29b22 31m19 32m19 34m18 36r25 42r28 48m22
+13i47 num{integer} 20|29b47 33m5 34r47 37r12 38m11 40m11 40r18 43r12 44m11
+. 46m11 46r18 48r51
+13i66 nbcb{integer} 20|29b66 38r18 43r18
+15U13*AfficheSolution 15=30 15>55 20|56b13 64l7 64t22
+15r30 Fen{18|29R8} 20|56b30 60m26
+15a55 sol{string} 20|56b55 57r20 59r16 60r39
 X 20 p_vue_graph.adb
-4p5 f{4|53P9[16|20]} 7m10 7r10 8m19 8r19 9m11 9r11
-5a5 V{16|27A14} 8m22 12r36 12r68
-10i9 l{integer} 12r39 12r71 12r101
-11i11 c{integer} 12r46 12r78 12r117
+15p5 f{4|53P9[16|20]} 18m10 18r10 19m19 19r19 20m11 20r11
+16a5 V{16|27A14} 19m22 23r36 23r68
+21i9 l{integer} 23r39 23r71 23r101
+22i11 c{integer} 23r46 23r78 23r117
+57i5 i{integer} 59r11 60r43 60r46 61m7 61r12
 X 21 sequenio.ads
 24k17*Sequential_IO 19|2w6
-X 30 s-sequio.ads
+X 31 s-sequio.ads
 63P9*File_Type(43R9)
 
