@@ -296,7 +296,7 @@
       b := temp;
     end permut;
 
-    procedure triBullesSurLettre(V : in out string) is
+    procedure triBullesSurLettre(V : in out TV_Case) is
     -- {} => {V trié par ordre croissant sur la lettre d'une case}
       i : integer := V'first;
       permutation: boolean := true;
@@ -330,7 +330,7 @@
       end loop;
     end triBullesSurNombre;
 
-    function SuccDeContigue(V : in TV_Case) return  is
+    function SuccDeContigue(V : in TV_Case) return boolean is
     -- {} => {vrai si tout les élément sont contigue 1 à 1 entre eux}
       i : integer := V'first + 1;
     begin -- SuccDeContigue

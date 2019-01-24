@@ -54,6 +54,15 @@ package p_combinaisons is
 	function contigue2cases(C1, C2 : in string) return boolean;
 	--{sol repr�sente une solution} => {r�sultat = vrai si 2 cases sont contigues}
 
+	procedure triBullesSurLettre(V : in out TV_Case);
+	-- {} => {V trié par ordre croissant sur le numero de case}
+
+	procedure triBullesSurNombre(V : in out TV_Case);
+	-- {} => {V trié par ordre croissant sur le numero de case}
+
+	function SuccDeContigue(V : in TV_Case) return boolean;
+	-- {V Trié} => {vrai si tout les élément sont contigue 1 à 1 entre eux}
+
 	function est_contigue(sol : in string) return boolean;
 		--{sol repr�sente une solution} => {r�sultat = vrai si sol est une solution contig�e}
 

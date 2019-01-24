@@ -8,7 +8,8 @@ procedure TestCombinaisons is
   f : p_cases_IO.file_type;
   V : TV_Gaudi(1..16);
   fsol : text_io.file_type;
-
+  nb, nbcont : integer;
+  combCase : string(1..16);
 begin -- TestCombinaisons
   -------CreeVectGaudi------------
   open(f, in_file, "CarreGaudi");
@@ -23,23 +24,29 @@ begin -- TestCombinaisons
   end loop;
   -----------CreeFicsol-----------
   open(fsol, in_file, "fsol.txt");
-  CreeFicsol(V, fsol);
+  -- CreeFicsol(V, fsol);
   ---------nbCombi---------------
   reset(fsol, in_file);
-  ecrire_ligne(nbCombi(fsol, 4));
-  ----------combi----------------
-  reset(fsol, in_file);
-  ecrire(combi(fsol, 3, 10));
-  -------------------------------
-
-  Affichage(fsol,3);
-  Affichage(fsol,4);
-  Affichage(fsol,5);
-  Affichage(fsol,6);
-  Affichage(fsol,7);
-
-  est_contigue("A1A2B2C2D3");
-  est_contigue("A1A2B2C2D3A4");
+  -- ecrire_ligne(nbCombi(fsol, 4));
+  -- ----------combi----------------
+  -- reset(fsol, in_file);
+  -- ecrire(combi(fsol, 3, 10));
+  -- -------------------------------
+  nbcont := 0;
+  -- Affichage(fsol,3);
+  -- Affichage(fsol,4);
+  -- Affichage(fsol,5);
+  -- Affichage(fsol,6);
+  -- Affichage(fsol,7);
+  while not end_of_file(fsol) loop
+    get_line(fsol, combCase, nb);
+    put(combcase(1..nb));
+    ecrire_ligne(est_contigue(combCase(1..nb)));
+    if est_contigue(combCase(1..nb)) then
+      nbcont := nbcont + 1;
+    end if;
+  end loop;
+  ecrire(nbcont);
 
 
 
