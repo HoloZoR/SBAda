@@ -25,9 +25,9 @@ begin -- gaudigraph
   AjouterTexte(Fcrypt, "Titre","Cryptogramme de Subirachs", 200,20, 400, 30);
   AjouterTexte(Fcrypt, "FondCrypto", "", 175, 70, 450, 450);
   ChangerCouleurFond(Fcrypt, "FondCrypto", FL_BLACK);
-
+  AjouterBouton(Fcrypt, "pred", "précédant", 30,600, 200,70);
   AfficheGrille(Fcrypt);
-
+  FinFenetre(Fcrypt);
   montrerfenetre(Fcrypt);
   s := attendreBouton(Fcrypt);
 end gaudigraph;

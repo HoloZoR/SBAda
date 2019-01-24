@@ -58,8 +58,8 @@ D a-tiinio.adb		20091130162119 df9cd7af ada.text_io.integer_io%b
 D a-unccon.ads		20070406091342 f9eb8f06 ada.unchecked_conversion%s
 D interfac.ads		20151118101227 4be8ce1b interfaces%s
 D i-cstrea.ads		20140801100435 e53d8b8e interfaces.c_streams%s
-D p_combinaisons.ads	20190124072425 5cc0b07f p_combinaisons%s
-D p_combinaisons.adb	20190124072307 e9ead7cd p_combinaisons%b
+D p_combinaisons.ads	20190124080153 5cc0b07f p_combinaisons%s
+D p_combinaisons.adb	20190124080153 e9ead7cd p_combinaisons%b
 D p_esiut.ads		20171021085208 79b955f7 p_esiut%s
 D sequenio.ads		20080801103345 98e3343c sequential_io%s
 D system.ads		20151123113124 6326c08a system%s
