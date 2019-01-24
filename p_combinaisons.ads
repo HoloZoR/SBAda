@@ -1,6 +1,6 @@
 with sequential_IO;
 with text_io; use text_io;
-
+With p_esiut; use p_esiut;
 
 package p_combinaisons is
 
@@ -50,18 +50,11 @@ package p_combinaisons is
 
 	procedure permut(a, b: in out string);
 		-- {} => {les valeurs de a et b ont été échangées}
+	function firstContigue(V : in TV_Case) return boolean;
+	--{} => {return Vrai si au moins un élément du vecteur est contigue au première élément}
 
 	function contigue2cases(C1, C2 : in string) return boolean;
 	--{sol repr�sente une solution} => {r�sultat = vrai si 2 cases sont contigues}
-
-	procedure triBullesSurLettre(V : in out TV_Case);
-	-- {} => {V trié par ordre croissant sur le numero de case}
-
-	procedure triBullesSurNombre(V : in out TV_Case);
-	-- {} => {V trié par ordre croissant sur le numero de case}
-
-	function SuccDeContigue(V : in TV_Case) return boolean;
-	-- {V Trié} => {vrai si tout les élément sont contigue 1 à 1 entre eux}
 
 	function est_contigue(sol : in string) return boolean;
 		--{sol repr�sente une solution} => {r�sultat = vrai si sol est une solution contig�e}

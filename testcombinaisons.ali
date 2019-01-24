@@ -10,7 +10,7 @@ RV NO_SECONDARY_STACK
 RV NO_DEFAULT_INITIALIZATION
 RV SPARK_05
 
-U testcombinaisons%b	testcombinaisons.adb	697b44f4 NE OO SU
+U testcombinaisons%b	testcombinaisons.adb	053d3aed NE OO SU
 W p_combinaisons%s	p_combinaisons.adb	p_combinaisons.ali
 W p_esiut%s		p_esiut.adb		p_esiut.ali
 W sequential_io%s
@@ -28,7 +28,7 @@ D a-tiinio.ads		20140717063513 aa04e5d6 ada.text_io.integer_io%s
 D a-unccon.ads		20070406091342 f9eb8f06 ada.unchecked_conversion%s
 D interfac.ads		20151118101227 4be8ce1b interfaces%s
 D i-cstrea.ads		20140801100435 e53d8b8e interfaces.c_streams%s
-D p_combinaisons.ads	20190123124706 ba3ab03a p_combinaisons%s
+D p_combinaisons.ads	20190123161744 5cc0b07f p_combinaisons%s
 D p_esiut.ads		20171021085208 79b955f7 p_esiut%s
 D sequenio.ads		20080801103345 98e3343c sequential_io%s
 D system.ads		20151123113124 6326c08a system%s
@@ -45,7 +45,7 @@ D s-stoele.ads		20140225151139 2dc34a04 system.storage_elements%s
 D s-traent.ads		20140730135025 005bf670 system.traceback_entries%s
 D s-unstyp.ads		20140731130224 9d58a4c0 system.unsigned_types%s
 D s-wchcon.ads		20140718092328 1b7d22d2 system.wch_con%s
-D testcombinaisons.adb	20190123125159 77cdb3cc testcombinaisons%b
+D testcombinaisons.adb	20190123170242 fd71cd90 testcombinaisons%b
 D text_io.ads		20070406091342 45d626c9 text_io%s
 X 4 a-sequio.ads
 53P9*File_Type<21|63P9> 29|8r18[12|20]
@@ -60,7 +60,7 @@ X 7 a-textio.ads
 92U14*Open 29|25s3
 100U14*Reset 29|28s3 31s3
 X 12 p_combinaisons.ads
-5K9*p_combinaisons 63e19 29|1w6 1r26 4r5 5r5
+5K9*p_combinaisons 65e19 29|1w6 1r26 4r5 5r5
 12a17*nom{string} 29|21r23
 13i17*valeur{positive} 29|22r23
 20K17*p_cases_io[4|43] 29|4r20 8r7
@@ -72,14 +72,14 @@ X 12 p_combinaisons.ads
 41V18*nbCombi{natural} 29|29s16
 44V18*Combi{string} 29|32s10
 48U19*Affichage 29|35s3 36s3 37s3 38s3 39s3
-57V18*est_contigue{boolean} 29|41s8 43s8 45s8 47s8 49s8
-60U19*CreeFicsolcont 29|56s3
+59V18*est_contigue{boolean} 29|51s6
+62U19*CreeFicsolcont 29|56s3
 X 13 p_esiut.ads
 15K11*p_esiut 176e14 29|2w15 2r37
 24U16*ECRIRE_LIGNE 29|22s5 29s3
-69U16*ECRIRE=70:42 29|32s3 42s3 44s3 46s3 48s3 50s3
+69U16*ECRIRE=70:42 29|32s3 51s34
 87U16*ECRIRE_LIGNE=88:42 29|21s5
-95U16*ECRIRE 29|42s25 44s27 46s23 48s27 50s29
+95U16*ECRIRE 29|51s56
 X 14 sequenio.ads
 24k17*Sequential_IO 29|3w6
 X 21 s-sequio.ads
@@ -91,7 +91,7 @@ X 29 testcombinaisons.adb
 10p3 fsol{7|52P9} 25m8 25r8 26m17 26r17 28m9 28r9 29r24 31m9 31r9 32r16 35m13
 . 35r13 36m13 36r13 37m13 37r13 38m13 38r13 39m13 39r13 56m18 56r18
 10p9 fcont{7|52P9} 54m10 54r10 56m23 56r23
-11b3 b{boolean} 41m3 42r32 43m3 44r34 45m3 46r30 47m3 48r34 49m3 50r36
+11b3 b{boolean} 51m1 51r63
 20i7 i{integer} 21r20 22r20
 X 30 text_io.ads
 24K9*Text_IO=24:29 29|2w6 2r28 10r17

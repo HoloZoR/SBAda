@@ -8,8 +8,8 @@ procedure gauditext is
   nbcases : T_nbcases;
   f : p_cases_IO.file_type;
   V : TV_Gaudi(1..16);
-  fsol : text_io.file_type;
-
+  fsol, fcont : text_io.file_type;
+  reponse : string(1..6);
 begin -- Procedure
   open(f, in_file, "CarreGaudi");
   CreeVectGaudi(f, V);
@@ -20,6 +20,7 @@ begin -- Procedure
   -----------CreeFicsol-----------
   open(fsol, in_file, "fsol.txt");
   CreeFicsol(V, fsol);
+  open(fcont, in_file, "fcont.txt");
 
   -------------------------------
   while true loop
@@ -33,8 +34,14 @@ begin -- Procedure
       end;
     end loop;
     afficheGrille(V);
-    Affichage(fsol,nbcases);
-    skip_line;
-
+    put_line("Voulez vous afficher toutes les combinaisons ou seulement les contigus?");
+    put("(entrer combin ou contig : )"); get(reponse);
+    if reponse = "combin" then
+      Affichage(fsol,nbcases);
+      skip_line;
+    elsif reponse = "contig" then
+      Affichage(fcont,nbcases);
+      skip_line;
+    end if;
   end loop;
 end gauditext;

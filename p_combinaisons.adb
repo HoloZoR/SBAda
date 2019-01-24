@@ -271,8 +271,7 @@
       end loop;
       -------fin affichage--------
     end Affichage;
-
-
+    ------------------------contigue2cases--------------------------------------
     function contigue2cases(C1, C2 : in string) return boolean is
     --{sol repr�sente une solution} => {r�sultat = vrai si 2 cases sont contigues}
         col1, col2 : character;
@@ -287,6 +286,7 @@
           or ((lig1 = lig2 +1 or lig1 = lig2 -1) and (col1 = T_Col'succ(col2) or col1 = T_Col'pred(col2))));
 
     end contigue2cases;
+    ------------------------permut--------------------------------------
     procedure permut(a, b: in out string) is
       -- {} => {les valeurs de a et b ont été échangées}
       temp: string(a'range);
@@ -295,58 +295,26 @@
       a := b;
       b := temp;
     end permut;
-
-    procedure triBullesSurLettre(V : in out TV_Case) is
-    -- {} => {V trié par ordre croissant sur la lettre d'une case}
-      i : integer := V'first;
-      permutation: boolean := true;
-    begin
-      while permutation loop
-        permutation := false;
-        for j in reverse i+1..V'last loop
-          if V(j) < V(j-1) then
-            permut(V(j), V(j-1));
-            permutation := true;
-          end if;
-        end loop;
-        i := i+1;
-      end loop;
-    end triBullesSurLettre;
-
-    procedure triBullesSurNombre(V : in out TV_Case) is
-    -- {} => {V trié par ordre croissant sur le numero de case}
-      i : integer := V'first;
-      permutation: boolean := true;
-    begin
-      while permutation loop
-        permutation := false;
-        for j in reverse i+1..V'last loop
-          if V(j)(2) < V(j-1)(2) then
-            permut(V(j), V(j-1));
-            permutation := true;
-          end if;
-        end loop;
-        i := i+1;
-      end loop;
-    end triBullesSurNombre;
-
-    function SuccDeContigue(V : in TV_Case) return boolean is
-    -- {} => {vrai si tout les élément sont contigue 1 à 1 entre eux}
-      i : integer := V'first + 1;
-    begin -- SuccDeContigue
-      while i <= V'Last and then contigue2cases(V(i-1), V(i)) loop
+    ------------------------firstContigue---------------------------------------
+    function firstContigue(V : in TV_Case) return boolean is
+    --{} => {return Vrai si au moins un élément du vecteur est contigue au première élément}
+      i :integer := V'first + 1;
+    begin -- firstContigue
+      while i <= V'last and then contigue2cases(V(V'First), V(i)) = false loop
         i := i + 1;
       end loop;
-      return i = V'Last + 1;
-    end SuccDeContigue;
-
+      return i <= V'last;
+    end firstContigue;
+    ------------------------est_contigue--------------------------------------
     function est_contigue(sol : in string) return boolean is
       --{sol repr�sente une solution} => {r�sultat = vrai si sol est une solution contig�e}
       ----- declatation de mes variables
       V : TV_Case(1..(sol'length/2)); -- vecteur de la taille de sol/2 possédent les cases
-      i : positive := V'first;
-      j : positive := V'first;
-      cont1, cont2 : boolean;
+      i : integer := V'first;
+      j : integer := V'first;
+      indCont : integer := V'First + 1;
+      indTest : integer := V'First;
+      permutation : boolean := False;
     begin
       -- Initialisation de V --
       while i < V'last + 1 loop
@@ -355,47 +323,70 @@
         j := j + 2;
       end loop; -- Vecteur initiliser par les cases de sol et contigue = true
       --------------------------------------------------------------------------
-      triBullesSurLettre(V);
-      cont1 := SuccDeContigue(V);
-      triBullesSurNombre(v);
-      cont2 := SuccDeContigue(V);
-      --------------------------------------------------------------------------
-      return cont1 or cont2;
-    end est_contigue;
 
+      while indCont < V'last  loop
+        indTest := indCont;
+        permutation := False;
+        while indTest < V'length and not permutation loop
+          i := 1;
+          while i < indCont and not permutation loop
+            if contigue2cases(V(indTest), v(i)) then
+              permut(V(indCont), V(indTest));
+              indCont := indCont + 1;
+              permutation := true;
+            else
+              i := i + 1;
+            end if;
+          end loop;
+          indTest := indTest + 1;
+        end loop;
+        if not permutation then
+          return false;
+        end if;
+      end loop;
+      return true;
+      --------------------------------------------------------------------------
+    end est_contigue;
+    ------------------------CréeFicsolcont--------------------------------------
     procedure CreeFicsolcont(fsol, fcont : in out text_io.file_type)  is
     -- {fsol ouvert} => {fcont contient les combinaisons contig�es de fsol et est structur� de la m�me fa�on}
       val : string(1..15);
       lg : integer;
-      type TV_Contigu is array (positive range <>) of string (1..15);
-      V : TV_Contigu (1..35);
+      ftemp : text_io.file_type;
       i : integer;
       nbcases : integer;
+      nb : integer;
     begin
       reset(fsol, in_file);
       reset(fcont, out_file);
+      create(ftemp, out_file, "ftemp.txt");
       nbcases := 3;
       while not end_of_file(fsol) loop
-        i := V'First;
-        skip_line(fsol);
-        while not end_of_page(fsol) loop
+        i := 0;
+        get(fsol,nb);
+        get(fsol,nb);
+        reset(ftemp, out_file);
+        for j in 1..nb + 1 loop
           get_line(fsol,val,lg);
           if est_contigue(val(1..lg)) then
-            V(i) := "               ";
-            V(i) := val(1..lg) & V(i)(lg+1..15);
+            put_line(ftemp,val(1..lg));
             i := i+1;
           end if;
         end loop;
+
         put(fcont, nbcases, 1);
         put(fcont,' ');
         put(fcont, i, 1);
+        new_line(fcont);
+        reset(ftemp, in_file);
+
         for j in 1..i loop
-          put_line(fcont, V(j));
+          get_line(ftemp,val,lg);
+          put_line(fcont, val(1..lg));
 
         end loop;
         new_page(fcont);
         nbcases := nbcases +1;
-
       end loop;
     end CreeFicsolcont;
 

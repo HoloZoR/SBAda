@@ -36,35 +36,21 @@ begin -- TestCombinaisons
   reset(fsol, in_file);
   ecrire(combi(fsol, 3, 10));
   -------------------------------
-
+  ---------affichage-------------
   Affichage(fsol,3);
   Affichage(fsol,4);
   Affichage(fsol,5);
   Affichage(fsol,6);
   Affichage(fsol,7);
 
-<<<<<<< HEAD
-  est_contigue("A1A2B2C2D3");
-  est_contigue("A1A2B2C2D3A4");
-=======
-  b := est_contigue("A1A2B2C2D3");
-  ecrire("A1A2B2C2D3"); ecrire(b);
-  b := est_contigue("A1A2B2C2D3A4");
-  ecrire("A1A2B2C2D3A4"); ecrire(b);
-  b := est_contigue("A1A2C2D3");
-  ecrire("A1A2C2D3"); ecrire(b);
-  b := est_contigue("A1A2B1B2C1C2");
-  ecrire("A1A2B1B2C1C2"); ecrire(b);
-  b := est_contigue("A1A2B3A4B2C2D3");
-  ecrire("A1A2B3A4B2C2D3"); ecrire(b);
+  ---------est_contigue-----------
 
+  b := est_contigue("A1A2A3A4"); ecrire("A1A2A3A4"); ecrire(b);
 
-
+  ---------CreeFicsolcont-----------
   create(fcont, in_file, "fcont.txt");
-
   CreeFicsolcont(fsol,fcont);
->>>>>>> 674176a4545ff1af673d5c8423a3233007ad773d
-
+  ---------fin ---------------------
 
 
 end TestCombinaisons;
