@@ -11,7 +11,7 @@ RV NO_DEFAULT_INITIALIZATION
 RV NO_DYNAMIC_SIZED_OBJECTS
 RV SPARK_05
 
-U gaudigraph%b		gaudigraph.adb		0b89a4b9 NE OO SU IL
+U gaudigraph%b		gaudigraph.adb		0195c0cd NE OO SU IL
 W ada.tags%s		a-tags.adb		a-tags.ali
 W forms%s		forms.adb		forms.ali
 W p_combinaisons%s	p_combinaisons.adb	p_combinaisons.ali
@@ -29,7 +29,7 @@ D a-textio.ads		20140717063745 386df5d4 ada.text_io%s
 D a-tiinio.ads		20140717063513 aa04e5d6 ada.text_io.integer_io%s
 D a-unccon.ads		20070406091342 f9eb8f06 ada.unchecked_conversion%s
 D forms.ads		20131119093435 77062ffa forms%s
-D gaudigraph.adb	20190124084058 7cbd300a gaudigraph%b
+D gaudigraph.adb	20190124102222 2247b349 gaudigraph%b
 D interfac.ads		20151118101227 4be8ce1b interfaces%s
 D i-c.ads		20110801143639 5421119b interfaces.c%s
 D i-cpoint.ads		20130104124955 ee8a93ec interfaces.c.pointers%s
@@ -38,7 +38,7 @@ D i-cstrea.ads		20140801100435 e53d8b8e interfaces.c_streams%s
 D p_combinaisons.ads	20190124072425 5cc0b07f p_combinaisons%s
 D p_esiut.ads		20171021085208 79b955f7 p_esiut%s
 D p_fenbase.ads		20151211101611 0921f64d p_fenbase%s
-D p_vue_graph.ads	20190124083640 55d3fd7b p_vue_graph%s
+D p_vue_graph.ads	20190124102036 01351a4c p_vue_graph%s
 D sequenio.ads		20080801103345 98e3343c sequential_io%s
 D stdarg.ads		20131119093435 7296442b stdarg%s
 D system.ads		20151123113124 6326c08a system%s
@@ -63,30 +63,33 @@ D x-xresource.ads	20131119093435 a4316b49 x.xresource%s
 D x-xutil.ads		20131119093435 c9532168 x.xutil%s
 X 10 forms.ads
 27K9*forms 6112e10 11|4w6 4r17
-344n9*FL_BLACK{343E10} 11|10r30 23r44
+344n9*FL_BLACK{343E10} 11|23r46
 X 11 gaudigraph.adb
-7U11*gaudigraph 7b11 29l5 29t15
+7U11*gaudigraph 7b11 33l5 33t15
 8r3 Facc{19|29R8} 15m18 15r18 17r18 18r23
-8r8 Fcrypt{19|29R8} 20m3 21m16 21r16 22m16 22r16 23m22 23r22 24m17 24r17
-. 25r14 27r18 28r23
-9a3 s{string} 18m3 28m3
-10e3 FondCouleur{19|9E11} 15r24
+8r8 Fcrypt{19|29R8} 20m3 21m18 21r18 22m18 22r18 23m24 23r24 24m19 24r19
+. 25m19 25r19 26m19 26r19 27m18 27r18 29r14 30r18 31m19 31r19 32m12 32r12
+. 32r44
+9a3 s{string} 18m3
+10i3 num{integer} 32m20
 X 17 p_combinaisons.ads
 5K9*p_combinaisons 11|1w6 1r26 17|65e19
 X 19 p_fenbase.ads
 3K10*p_fenbase 11|3w6 3r21 19|195e14
 7R11*TR_Fenetre 11|8r17 19|34e13
-9E11*T_Couleur{10|443E13} 11|10r17
 29R8*TR_Fenetre
 38U13*InitialiserFenetres 11|13s3
 40V12*DebutFenetre{29R8} 11|20s13
-64U13*AjouterTexte 11|21s3 22s3
-120U13*FinFenetre 11|25s3
-123U13*MontrerFenetre 11|17s3 27s3
-129V12*AttendreBouton{string} 11|18s8 28s8
-153U13*ChangerCouleurFond 11|23s3
+46U13*AjouterBouton 11|25s5 26s5
+64U13*AjouterTexte 11|21s5 22s5 27s5
+120U13*FinFenetre 11|29s3
+123U13*MontrerFenetre 11|17s3 30s3
+129V12*AttendreBouton{string} 11|18s8 32s29
+153U13*ChangerCouleurFond 11|23s5
 X 20 p_vue_graph.ads
-6K9*p_vue_graph 11|2w6 2r23 20|11e16
-7U13*AfficheGrille 11|24s3
-9U13*FenetreAccueil 11|15s3
+7K9*p_vue_graph 11|2w6 2r23 20|18e16
+8U13*AfficheGrille 11|24s5
+10U13*FenetreAccueil 11|15s3
+13U13*Solution 11|32s3
+15U13*AfficheSolution 11|31s3
 

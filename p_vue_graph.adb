@@ -1,15 +1,17 @@
 
 package body p_vue_graph is
 
-  procedure FenetreAccueil(Facc : in out TR_Fenetre; FondCouleur : in T_couleur) is
+  procedure FenetreAccueil(Facc : in out TR_Fenetre) is
   -- {} => {Creation de la fenetre d'accueil}
-    x : integer := 170;
-    y : integer := 300;
+    x : integer := 150;
+    y : integer := 345;
     C : integer := 90; -- Pour bouton carré
   begin -- FenetreAccueil
     Facc := DebutFenetre("Accueil", 800,700); -- x y et L h
       AjouterTexte(Facc, "TexteAccueil", "Bonjour et Bienvenue dans notre programme !", 250, 75, 400, 50);
-      AjouterTexte(Facc, "TexteInstuction", "Appuyer sur le bouton Commencer !", 270, 650, 400, 50);
+      AjouterTexte(Facc, "TexteCommencer", "Appuyer sur le bouton Commencer !", 270, 650, 400, 50);
+      --------------------------------------------------------------------------
+      AjouterTexte(Facc, "TexteInstuction", "Tout d'abord, Vous devez choisir un nombre de case. Ensuite, il vous faut choisir si vous voulez afficher toute les solutions", 270, 650, 320, 50);
       --------------------Bouton choix nb cases---------------------------------
       AjouterBouton(Facc,"Bouton3","3 cases",x, y, C, C);
         x := x + 100;
@@ -21,8 +23,8 @@ package body p_vue_graph is
         x := x + 100;
       AjouterBouton(Facc,"Bouton7","7 cases",x, y, C, C);
       --------------------Ajout de Check box------------------------------------
-      AjouterBouton(Facc,"BoutonToutes"," Toutes",290, 400, 100, 50);
-      AjouterBouton(Facc,"BoutonContigue"," Contigues",420, 400, 100, 50);
+      AjouterBouton(Facc,"BoutonToutes"," Toutes",285, 500, 100, 50);
+      AjouterBouton(Facc,"BoutonContigue"," Contigues",400, 500, 100, 50);
 
       -------------------- Bouton pour commmencer-------------------------------
       AjouterBouton(Facc,"BoutonCommencer","Commencer",340, 600, 100, 50);
@@ -45,5 +47,38 @@ package body p_vue_graph is
   end AfficheGrille;
 
 
+  procedure Solution(Fen : in out TR_Fenetre; num : out integer; nbcb : in integer; s : in string) is
+  begin
+    num := 1;
+    loop
+      if s = "pred" then
+        if num = 1 then
+          num := nbcb;
+        else
+          num := num-1;
+        end if;
+      elsif s = "succ" then
+        if num = nbcb then
+          num := 1;
+        else
+          num := num+1;
+        end if;
+
+      end if;
+      ChangerTexte(Fen, "numsol", integer'image(num));
+
+    end loop;
+
+  end Solution;
+
+  procedure AfficheSolution (Fen : in out TR_Fenetre; sol : in string) is
+    i : integer := sol'first;
+  begin
+    while i <= sol'length loop
+      ChangerCouleurFond(Fen, "Case"& sol(i..i+1), FL_DEEPPINK);
+      i := i+2;
+    end loop;
+
+  end AfficheSolution;
 
 end p_vue_graph;
