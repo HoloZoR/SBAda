@@ -19,12 +19,15 @@ begin -- gaudigraph
   ------------------------------------------------------------------------------
   montrerfenetre(facc);
   nbcases := 3; Btcontigue := false; BtCommencer := False;
+  changercouleurfond(Facc, "Bouton3", FL_PALEGREEN);
+  changercouleurfond(Facc, "BoutonToutes", FL_PALEGREEN);
   while not BtCommencer loop
     choixdesCase(Facc,attendreBouton(facc),nbcases, Btcontigue, BtCommencer);
     ecrire_ligne(nbcases);
     ecrire_ligne(Btcontigue);
     ecrire_ligne(BtCommencer);
   end loop;
+  cacherfenetre(Facc);
   montrerfenetre(Fcrypt);
   s := attendreBouton(FCrypt);
 end gaudigraph;
