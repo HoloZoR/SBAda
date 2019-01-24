@@ -7,13 +7,8 @@ use p_combinaisons.p_int_io;
 procedure TestCombinaisons is
   f : p_cases_IO.file_type;
   V : TV_Gaudi(1..16);
-<<<<<<< HEAD
-  fsol : text_io.file_type;
-
-=======
   fsol, fcont : text_io.file_type;
   b : boolean;
->>>>>>> 674176a4545ff1af673d5c8423a3233007ad773d
 begin -- TestCombinaisons
   -------CreeVectGaudi------------
   open(f, in_file, "CarreGaudi");
